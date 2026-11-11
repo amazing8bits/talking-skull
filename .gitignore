@@ -1,0 +1,24 @@
+# Secrets
+.env
+secrets.h
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Whisper / model caches and recordings
+models/
+*.wav
+!docs/**/*.wav
+
+# macOS
+.DS_Store
+
+# Arduino / PlatformIO
+build/
+.pio/
+
+# Fusion 360 backups
+*.f3d.bak
