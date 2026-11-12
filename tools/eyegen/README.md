@@ -1,0 +1,13 @@
+# eyegen: original eye textures
+
+Generates the skull's eye artwork procedurally from noise and geometry: radial iris fibers, collarette, crypts, limbal ring, sclera veins, shading and corneal glints. No third-party artwork is used, so the output can be published freely under this repo's license.
+
+```bash
+pip install numpy pillow
+python3 eyegen.py --color hazel --seed 7 --out out/
+```
+
+- `--color`: `hazel`, `blue`, `green`, `brown`, `ember`
+- `--seed`: each seed gives a different iris, so use two seeds for slightly mismatched left and right eyes
+
+The iris is saved in polar form (`iris_polar.png`), so the firmware can dilate the pupil smoothly without distorting the iris.
