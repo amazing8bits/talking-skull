@@ -1,0 +1,6 @@
+numpy
+sounddevice
+webrtcvad-wheels
+mlx-whisper
+anthropic
+pyserial

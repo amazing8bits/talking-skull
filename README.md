@@ -9,18 +9,18 @@ Built for Halloween 2026 trick-or-treaters. Next stop: Maker Faire Philadelphia.
 ## How it works
 
 ```
- LD2450 radar ──UART──▶ ESP32-S3 ◀──UDP / Wi-Fi──▶ Mac mini (M4)
+ LD2450 radar ──UART──▶ ESP32-S3 ◀──USB serial──▶ Mac mini (M4)
                           │                            │
         jaw servo ◀───────┤                            ├── USB mic array ──▶ Whisper (MLX, on-device STT)
         neck servo ◀──────┤                            ├── Claude API (Haiku) — skull persona
-        2× GC9A01 eyes ◀──┘                            └── macOS `say` TTS ──▶ TPA3116D2 amp ──▶ 2" speaker
+        2× GC9A01 eyes ◀──┘                            └── macOS `say` TTS ──▶ amp ──▶ 2" speaker
 ```
 
 1. The **LD2450 mmWave radar** spots a visitor and reports their position.
 2. The **ESP32-S3** wakes the eyes, turns the neck to track the visitor, and tells the Mac someone is there.
 3. The **Mac mini** greets the visitor, listens through the mic array, transcribes with Whisper, gets a reply from Claude, and speaks it.
-4. While the skull speaks, the Mac streams jaw positions to the ESP32. Jaw sync uses per-syllable peak/valley detection with a little servo lead time, so syllables don't blur together.
-5. The eyes change behavior with the conversation (idle, listening, thinking, speaking): gaze tracking, saccades and blinks.
+4. While the skull speaks, the Mac streams jaw positions to the ESP32 over USB serial. Jaw sync uses per-syllable peak/valley detection with a little servo lead time, so syllables don't blur together.
+5. The eyes change behavior with the conversation (idle, listening, thinking, speaking): gaze tracking, saccades, blinks and pupil size. The eye artwork is original and generated procedurally by [`tools/eyegen`](tools/eyegen/).
 
 The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and audio.
 
@@ -29,9 +29,10 @@ The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and au
 | Path | What's in it |
 |---|---|
 | [`host/`](host/) | Mac mini software: the conversation loop, setup script, login launcher |
-| [`firmware/skull_esp32/`](firmware/skull_esp32/) | ESP32-S3 Arduino sketch: servos, radar, eyes, UDP link |
+| [`firmware/skull_esp32/`](firmware/skull_esp32/) | ESP32-S3 Arduino sketch: servos, radar, eyes, USB serial link to the Mac |
 | [`hardware/`](hardware/) | Bill of materials, wiring and pinout, power |
 | [`hardware/cad/`](hardware/cad/) | 3D-printable parts (jaw servo bracket and others) |
+| [`tools/eyegen/`](tools/eyegen/) | Generator for the original eye artwork |
 | [`docs/`](docs/) | Build notes, lessons learned, roadmap |
 
 ## Quick start
@@ -39,18 +40,18 @@ The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and au
 **Mac mini**
 ```bash
 cd host
-./setup.sh                    # one-time install of dependencies
-cp .env.example .env          # then add your ANTHROPIC_API_KEY
-python3 skull.py
+bash setup.sh                 # one-time install
+cp .env.example .env          # add your ANTHROPIC_API_KEY
+source .venv/bin/activate && export ANTHROPIC_API_KEY=sk-ant-...
+python skull.py --text        # test without the mic or ESP32
 ```
-To start the skull automatically at login, add `start_skull.command` to your Login Items.
+Then double-click `start_skull.command`, or add it to Login Items. See [`host/README.md`](host/README.md).
 
 **ESP32-S3**
-1. Open `firmware/skull_esp32/skull_esp32.ino` in the Arduino IDE (board: *ESP32S3 Dev Module*, PSRAM: *OPI PSRAM*).
-2. Copy `secrets.example.h` to `secrets.h` and fill in your Wi-Fi details and the Mac's IP address.
-3. Install the libraries listed in the [firmware README](firmware/skull_esp32/README.md), then upload.
+1. Open `firmware/skull_esp32/skull_esp32.ino` in the Arduino IDE (board *ESP32S3 Dev Module*, PSRAM *OPI PSRAM*, USB CDC On Boot *Disabled*).
+2. Install **ESP32Servo** and **LovyanGFX**, then upload. See the [firmware README](firmware/skull_esp32/README.md).
 
-> ⚠️ **Before you power the neck servo for the first time:** the HS-488HB has no mechanical stops. The firmware enforces ±70° software limits, so don't remove them.
+> ⚠️ The HS-488HB neck servo has no mechanical stops. The firmware limits it to ±40° (`NECK_MAX_DEG`), so don't remove that limit.
 
 ## Hardware at a glance
 

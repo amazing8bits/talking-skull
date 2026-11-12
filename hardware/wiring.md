@@ -8,19 +8,23 @@
 | Neck servo (HS-488HB) | 5 | Direction is inverted in firmware so the skull tracks visitors |
 | LD2450 TX → ESP32 RX | 16 | The radar UART uses 3.3 V logic |
 | LD2450 RX ← ESP32 TX | 17 | |
-| Eye SPI SCL / SDA | TBD | Shared between both eyes |
-| Eye DC / RST | TBD | Shared |
-| Left eye CS | TBD | |
-| Right eye CS | TBD | |
+| Eye SCL (SPI clock) | 12 | Shared by both eyes |
+| Eye SDA (SPI data) | 11 | Shared |
+| Eye DC | 8 | Shared |
+| Eye RST | 18 | Shared |
+| Left eye CS | 10 | |
+| Right eye CS | 9 | |
 
-<!-- TODO: fill in the eye pins from the sketch -->
+The eyes run at 20 MHz SPI over jumper wires. With short wires you can try 40 MHz (`SPI_HZ`). Both panels are mounted upside down, so the sketch rotates them 180°.
+
+The Mac link is **USB serial** (115200 baud) through the dev kit's USB-C port.
 
 ## Power
 
 ```
-TalentCell 12 V ──[3 A slow-blow]──┬── XL4016 buck ──▶ servo rail (jaw + neck) ── bulk cap
-                                   └── 5 V USB buck ──▶ ESP32-S3 USB-C ──▶ radar 5 V, eyes 3.3 V
-Mains ──▶ Mac mini, TPA3116D2 amp ──▶ speaker in the skull
+TalentCell 12 V ──[3 A slow-blow]──── XL4016 buck ──▶ servo rail (jaw + neck) ── bulk cap
+Mac mini USB ──▶ ESP32-S3 USB-C (power + serial) ──▶ radar 5 V, eyes 3.3 V
+Mains ──▶ Mac mini ──▶ audio out / amp ──▶ speaker in the skull
 ```
 
 - **Common ground:** the servo rail ground must connect to the ESP32 ground, or the servo signals won't have a reference.
