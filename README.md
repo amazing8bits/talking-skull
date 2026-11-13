@@ -60,7 +60,7 @@ Then double-click `start_skull.command`, or add it to Login Items. See [`host/RE
 - 2× 1.28" GC9A01 round 240×240 LCDs (eyes)
 - Hitec HS-65MG (jaw) and HS-488HB (neck)
 - M4 Mac mini, USB mic array, TPA3116D2 amp, Peerless PLS-P830983 2" 4 Ω driver
-- TalentCell 12 V 7000 mAh pack with separate servo and logic bucks
+- Triad WSU060-4000 6 V 4 A adapter for the servos; the ESP32 is powered over USB from the Mac
 
 Full details are in [`hardware/BOM.md`](hardware/BOM.md) and [`hardware/wiring.md`](hardware/wiring.md).
 

@@ -11,11 +11,12 @@
 | 1 | USB 2-mic array (ReSpeaker Lite) | Microphone | Connected to the Mac |
 | 1 | TPA3116D2 amplifier board | Audio amp | Mains-powered, next to the Mac |
 | 1 | Peerless PLS-P830983, 2" 4 Ω full-range | Speaker | Inside the skull |
-| 1 | TalentCell 12 V 7000 mAh battery | Skull power | Feeds both bucks |
-| 1 | XL4016 adjustable buck (8 A) | Servo rail | Set to servo voltage |
-| 1 | 5 V buck with USB output | Logic rail | Powers the ESP32 over USB-C |
-| 1 | 3 A slow-blow fuse and holder | 12 V protection | On the battery output |
-| — | Bulk capacitor on the servo rail, 20 AWG power wire, 24–26 AWG signal wire | | |
+| 1 | Triad Magnetics WSU060-4000 (6 V, 4 A, 24 W wall adapter) | Servo power | Regulated; 2.1 × 5.5 mm plug, center positive. Not the WSX060-4000, which has a 2.5 mm center-negative plug. Check the output with a meter before connecting the servos |
+| 1 | 2.1 × 5.5 mm barrel jack to screw terminal adapter | Servo power | Connects the adapter to the servo rail |
+| 1 | ~1000 µF electrolytic capacitor, 10 V or higher | Servo rail | Across the servo rail near the servos, to absorb current spikes |
+| — | 20 AWG power wire, 24–26 AWG signal wire | | |
+
+The ESP32 gets its power and serial link from the Mac mini's USB port, so the skull no longer needs a battery or buck converters.
 
 ## Mechanical (neck drivetrain)
 
