@@ -33,7 +33,7 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 | 1 pack (2) | Flexible shaft coupler, 6.35 mm to 6.35 mm bore, L25 × D20 mm | uxcell | Joins the servo shaft to the 1/4" neck rod |
 | 1 | 1314 Series steel set-screw hub, 1/4" bore | goBILDA 1314-0016-0250 | Fixed to the rod above the collar; the square beam bolts to it |
 | 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | Bolts to the hub and fits into a 3D-printed bracket that secures it to the skull, so the skull turns with the rod |
-| 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | Clamps onto the 1/4" rod where it exits the top of the aluminum tube, at the bottom of the skull, and takes the weight of the head |
+| 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | Clamps onto the 1/4" rod where it exits the top of the aluminum tube, at the bottom of the skull, and takes the weight of the head. Sits directly on the top bearing; a spin test confirmed it turns freely, so no spacer is needed |
 
 ![Neck drivetrain cross-section](../docs/images/neck_drivetrain.svg)
 
