@@ -35,6 +35,8 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 | 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | Bolts to the hub and fits into a 3D-printed bracket that secures it to the skull, so the skull turns with the rod |
 | 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | Clamps onto the 1/4" rod where it exits the top of the aluminum tube, at the bottom of the skull, and takes the weight of the head |
 
+![Neck drivetrain cross-section](../docs/images/neck_drivetrain.svg)
+
 **How it goes together:** the rod runs up through the aluminum tube, turning in a flanged ball bearing at each end. Where it comes out at the bottom of the skull, the clamping collar grips the rod and carries the weight of the head. Above the collar, the set-screw hub is fixed to the rod, the square beam bolts to the hub, and the beam fits into a 3D-printed bracket that secures it to the skull.
 
 <!-- TODO: add links/prices and anything I've missed -->

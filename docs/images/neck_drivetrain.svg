@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 640" width="700" height="640" font-family="Helvetica, Arial, sans-serif">
+  <title>Neck pan drivetrain cross-section</title>
+  <desc>The HS-488HB servo at the bottom drives a 1/4 inch rod through a flexible coupler. The rod turns in two flanged ball bearings in the ends of a 5/8 inch aluminum tube. A clamping collar on the top bearing's inner race carries the head's weight. Above the skull post, a set-screw hub on the rod holds a square beam that fits into a 3D-printed bracket fixed to the skull.</desc>
+  <defs>
+    <style>
+      .turn  { fill: #7fd1c7; stroke: #1f6f66; stroke-width: 1; }
+      .fixed { fill: #c9c9c9; stroke: #555; stroke-width: 1; }
+      .print { fill: #f2c18d; stroke: #9a5b1c; stroke-width: 1; }
+      .lbl   { font-size: 13px; fill: #222; }
+      .bold  { font-size: 13px; font-weight: bold; fill: #222; }
+      .note  { font-size: 11px; fill: #666; }
+      .lead  { stroke: #888; stroke-width: 0.8; fill: none; }
+    </style>
+  </defs>
+  <rect width="700" height="640" fill="#ffffff"/>
+
+  <!-- Skull / cranium outline -->
+  <rect x="190" y="22" width="220" height="190" rx="14" fill="none" stroke="#888" stroke-dasharray="5 4"/>
+  <text class="note" x="200" y="40">Skull (turns with the rod)</text>
+
+  <!-- Rod -->
+  <rect class="turn" x="296" y="58" width="8" height="402"/>
+
+  <!-- 3D printed bracket around the beam -->
+  <path class="print" d="M270 52 h60 v58 h-10 v-48 h-40 v48 h-10 z"/>
+  <!-- Square beam -->
+  <rect class="turn" x="282" y="62" width="36" height="52" rx="2"/>
+  <!-- Hub -->
+  <rect class="turn" x="262" y="114" width="76" height="22" rx="3"/>
+
+  <!-- Skull post (part of the skull) -->
+  <rect class="print" x="236" y="168" width="54" height="34" rx="3"/>
+  <rect class="print" x="310" y="168" width="54" height="34" rx="3"/>
+
+  <!-- Clamping collar -->
+  <rect class="turn" x="272" y="220" width="56" height="22" rx="3"/>
+
+  <!-- Top bearing: flange + body (outer race fixed, inner race turns) -->
+  <rect class="fixed" x="262" y="246" width="76" height="7"/>
+  <rect class="fixed" x="282" y="253" width="36" height="26"/>
+  <rect class="turn"  x="291" y="246" width="18" height="33"/>
+
+  <!-- Aluminum tube -->
+  <rect class="fixed" x="270" y="253" width="12" height="190"/>
+  <rect class="fixed" x="318" y="253" width="12" height="190"/>
+
+  <!-- Bottom bearing -->
+  <rect class="fixed" x="282" y="417" width="36" height="26"/>
+  <rect class="fixed" x="262" y="443" width="76" height="7"/>
+  <rect class="turn"  x="291" y="417" width="18" height="33"/>
+
+  <!-- Flexible coupler -->
+  <rect class="turn" x="280" y="460" width="40" height="46" rx="4"/>
+  <line x1="280" y1="483" x2="320" y2="483" stroke="#1f6f66" stroke-dasharray="3 2"/>
+  <!-- Servo shaft -->
+  <rect class="turn" x="294" y="506" width="12" height="18"/>
+  <!-- Servo -->
+  <rect class="fixed" x="240" y="524" width="120" height="56" rx="6"/>
+  <text class="note" x="300" y="557" text-anchor="middle">HS-488HB</text>
+
+  <!-- Gap markers -->
+  <line x1="372" y1="138" x2="372" y2="166" stroke="#c0392b" stroke-width="1.2"/>
+  <line x1="366" y1="138" x2="378" y2="138" stroke="#c0392b"/>
+  <line x1="366" y1="166" x2="378" y2="166" stroke="#c0392b"/>
+  <line x1="372" y1="451" x2="372" y2="459" stroke="#c0392b" stroke-width="1.2"/>
+  <line x1="366" y1="451" x2="378" y2="451" stroke="#c0392b"/>
+  <line x1="366" y1="459" x2="378" y2="459" stroke="#c0392b"/>
+
+  <!-- Labels -->
+  <path class="lead" d="M330 70 H430"/><text class="lbl" x="436" y="74">3D-printed bracket, fixed to skull</text>
+  <path class="lead" d="M318 92 H430"/><text class="lbl" x="436" y="96">goBILDA 1106 square beam, 40 mm</text>
+  <path class="lead" d="M338 125 H430"/><text class="lbl" x="436" y="129">goBILDA 1314 set-screw hub (torque)</text>
+  <path class="lead" d="M378 152 H430"/><text class="note" x="436" y="156">Clear gap, no contact</text>
+  <path class="lead" d="M364 185 H430"/><text class="lbl" x="436" y="189">Skull post, 3/8" clearance hole</text>
+  <path class="lead" d="M328 231 H430"/><text class="bold" x="436" y="235">ServoCity clamping collar, 1/4"</text>
+  <text class="note" x="436" y="250">Carries the head's weight</text>
+  <path class="lead" d="M338 262 H430"/><text class="lbl" x="436" y="266">Top flanged ball bearing</text>
+  <text class="note" x="436" y="281">Collar touches the inner race only</text>
+  <path class="lead" d="M330 340 H430"/><text class="lbl" x="436" y="344">5/8" OD aluminum tube</text>
+  <path class="lead" d="M309 340 C 360 360, 400 380, 430 380"/><text class="lbl" x="436" y="384">1/4" stainless rod</text>
+  <path class="lead" d="M338 430 H430"/><text class="lbl" x="436" y="434">Bottom flanged ball bearing</text>
+  <text class="note" x="436" y="449">Bearings Loctited into the tube ends</text>
+  <path class="lead" d="M378 455 H430"/><text class="note" x="436" y="466">Small gap (~1 mm)</text>
+  <path class="lead" d="M320 490 H430"/><text class="lbl" x="436" y="494">Flexible coupler, 1/4" to 1/4"</text>
+  <path class="lead" d="M306 515 H430"/><text class="lbl" x="436" y="519">ServoCity 1/4" 25T servo shaft</text>
+
+  <!-- Legend -->
+  <rect class="turn" x="40" y="600" width="14" height="14"/><text class="lbl" x="60" y="612">Turns with the head</text>
+  <rect class="fixed" x="200" y="600" width="14" height="14"/><text class="lbl" x="220" y="612">Fixed</text>
+  <rect class="print" x="290" y="600" width="14" height="14"/><text class="lbl" x="310" y="612">Skull parts (turn with the head)</text>
+  <text class="note" x="660" y="612" text-anchor="end">Not to scale</text>
+</svg>
