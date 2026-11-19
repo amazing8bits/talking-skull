@@ -10,14 +10,16 @@
 | 1 | Hitec HS-488HB servo | Neck pan | No mechanical stops: use software limits |
 | 1 | Apple Mac mini M4, 16 GB | AI/audio host | Mains-powered, hidden near the skull |
 | 1 | Seeed Studio reSpeaker XVF3800 USB Microphone Array, bare board | Microphone | Connected to the Mac over USB; `--in-device ReSpeaker` matches it by name |
-| 1 | TPA3116D2 amplifier board | Audio amp | Mains-powered, next to the Mac |
+| 1 | TPA3116D2 amplifier board | Audio amp | Next to the Mac, powered by the 12 V adapter below |
+| 1 | MEAN WELL GSM36U12-P1J (12 V, 3 A, 36 W wall adapter) | Amp power | |
+| 1 | 3 A fuse and inline holder | Amp protection | On the 12 V line to the amp |
 | 1 | Peerless PLS-P830983, 2" 4 Ω full-range | Speaker | Inside the skull |
 | 1 | Triad Magnetics WSU060-4000 (6 V, 4 A, 24 W wall adapter) | Servo power | Regulated; 2.1 × 5.5 mm plug, center positive. Not the WSX060-4000, which has a 2.5 mm center-negative plug. Check the output with a meter before connecting the servos |
 | 1 | 2.1 × 5.5 mm barrel jack to screw terminal adapter | Servo power | Connects the adapter to the servo rail |
 | 1 | ~1000 µF electrolytic capacitor, 10 V or higher | Servo rail | Across the servo rail near the servos, to absorb current spikes |
 | — | 20 AWG power wire, 24–26 AWG signal wire | | |
 
-The ESP32 gets its power and serial link from the Mac mini's USB port, so the skull no longer needs a battery or buck converters.
+The ESP32 gets its power and serial link from the Mac mini's USB port, so the build no longer needs a battery or buck converters. Each part runs from its own mains adapter.
 
 ## Mechanical (neck drivetrain)
 

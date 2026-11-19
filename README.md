@@ -60,7 +60,7 @@ Then double-click `start_skull.command`, or add it to Login Items. See [`host/RE
 - 2× 1.28" GC9A01 round 240×240 LCDs (eyes)
 - Hitec HS-65MG (jaw) and HS-488HB (neck)
 - M4 Mac mini, Seeed Studio reSpeaker XVF3800 USB mic array (bare board), TPA3116D2 amp, Peerless PLS-P830983 2" 4 Ω driver
-- Triad WSU060-4000 6 V 4 A adapter for the servos; the ESP32 is powered over USB from the Mac
+- Mains power throughout, no battery: Triad WSU060-4000 6 V 4 A adapter for the servos, MEAN WELL GSM36U12-P1J 12 V 3 A adapter (fused at 3 A) for the amp, and the ESP32 powered over USB from the Mac
 
 Full details are in [`hardware/BOM.md`](hardware/BOM.md) and [`hardware/wiring.md`](hardware/wiring.md).
 
