@@ -21,6 +21,13 @@
 
 The ESP32 gets its power and serial link from the Mac mini's USB port, so the build no longer needs a battery or buck converters. Each part runs from its own mains adapter.
 
+## Mechanical (jaw linkage)
+
+| Qty | Part | Brand / part no. | Notes |
+|---|---|---|---|
+| 2 | Threaded ball link, 2-56 | Du-Bro DUB181 | One at the servo horn, one at the jaw lever |
+| 1 | 2-56 threaded rod | | Cut from a #2-56 × 1" screw; links the two ball links |
+
 ## Mechanical (neck drivetrain)
 
 | Qty | Part | Brand / part no. | Notes |
