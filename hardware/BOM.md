@@ -9,7 +9,7 @@
 | 1 | Hitec HS-65MG micro servo | Jaw | Ball-joint linkage to the jaw lever; two-piece printed bracket |
 | 1 | Hitec HS-488HB servo | Neck pan | No mechanical stops: use software limits |
 | 1 | Apple Mac mini M4, 16 GB | AI/audio host | Mains-powered, hidden near the skull |
-| 1 | USB 2-mic array (ReSpeaker Lite) | Microphone | Connected to the Mac |
+| 1 | Seeed Studio reSpeaker XVF3800 USB Microphone Array, bare board | Microphone | Connected to the Mac over USB; `--in-device ReSpeaker` matches it by name |
 | 1 | TPA3116D2 amplifier board | Audio amp | Mains-powered, next to the Mac |
 | 1 | Peerless PLS-P830983, 2" 4 Ω full-range | Speaker | Inside the skull |
 | 1 | Triad Magnetics WSU060-4000 (6 V, 4 A, 24 W wall adapter) | Servo power | Regulated; 2.1 × 5.5 mm plug, center positive. Not the WSX060-4000, which has a 2.5 mm center-negative plug. Check the output with a meter before connecting the servos |

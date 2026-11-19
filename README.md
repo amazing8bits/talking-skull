@@ -18,7 +18,7 @@ Built for Halloween 2026 trick-or-treaters. Next stop: Maker Faire Philadelphia.
 
 1. The **LD2450 mmWave radar** spots a visitor and reports their position.
 2. The **ESP32-S3** wakes the eyes, turns the neck to track the visitor, and tells the Mac someone is there.
-3. The **Mac mini** greets the visitor, listens through the mic array, transcribes with Whisper, gets a reply from Claude, and speaks it.
+3. The **Mac mini** greets the visitor, listens through the reSpeaker XVF3800 mic array, transcribes with Whisper, gets a reply from Claude, and speaks it.
 4. While the skull speaks, the Mac streams jaw positions to the ESP32 over USB serial. Jaw sync uses per-syllable peak/valley detection with a little servo lead time, so syllables don't blur together.
 5. The eyes change behavior with the conversation (idle, listening, thinking, speaking): gaze tracking, saccades, blinks and pupil size. The eye artwork is original and generated procedurally by [`tools/eyegen`](tools/eyegen/).
 
@@ -59,7 +59,7 @@ Then double-click `start_skull.command`, or add it to Login Items. See [`host/RE
 - HLK-LD2450 24 GHz mmWave radar
 - 2× 1.28" GC9A01 round 240×240 LCDs (eyes)
 - Hitec HS-65MG (jaw) and HS-488HB (neck)
-- M4 Mac mini, USB mic array, TPA3116D2 amp, Peerless PLS-P830983 2" 4 Ω driver
+- M4 Mac mini, Seeed Studio reSpeaker XVF3800 USB mic array (bare board), TPA3116D2 amp, Peerless PLS-P830983 2" 4 Ω driver
 - Triad WSU060-4000 6 V 4 A adapter for the servos; the ESP32 is powered over USB from the Mac
 
 Full details are in [`hardware/BOM.md`](hardware/BOM.md) and [`hardware/wiring.md`](hardware/wiring.md).
