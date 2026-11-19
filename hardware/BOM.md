@@ -23,11 +23,17 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 
 ## Mechanical (neck drivetrain)
 
-| Qty | Part | Notes |
-|---|---|---|
-| 1 | 6061-T6 aluminum tube, 5/8" OD × 3/8" ID | Structural spine, replaces the skeleton's neck post |
-| 2 | Flanged oil-lite bronze bushings, 1/4" ID × 3/8" OD | Pressed into the tube ends with Loctite 638 |
-| 1 | 1/4" precision-ground steel rod | Carries torque only |
-| 1 | Aluminum bridge | Spans the two bosses inside the skull |
+| Qty | Part | Brand / part no. | Notes |
+|---|---|---|---|
+| 1 | 6061-T6 aluminum tube, 5/8" OD × 3/8" ID | | Structural spine, replaces the skeleton's neck post |
+| 2 | Flanged oil-lite bronze bushings, 1/4" ID × 3/8" OD | | Pressed into the tube ends with Loctite 638 |
+| 1 | Aluminum bridge | | Spans the two bosses inside the skull |
+| 1 | 0.250" (1/4") × 12.00" stainless steel precision shafting | ServoCity 2100-0250-1200 | Neck rod; carries torque only. Cut to length |
+| 1 pack (2) | 1/4" ID flanged ball bearing, 3/8" OD, 1/8" thick | ServoCity 1601-0001-0250 | |
+| 1 | 1/4" round servo shaft, 25-tooth spline, 33 mm long | ServoCity 1911-0025-0250 | Fits the HS-488HB's 25T spline |
+| 1 pack (2) | Flexible shaft coupler, 6.35 mm to 6.35 mm bore, L25 × D20 mm | uxcell | Joins the servo shaft to the 1/4" neck rod |
+| 1 | 1314 Series steel set-screw hub, 1/4" bore | goBILDA 1314-0016-0250 | |
+| 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | |
+| 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | |
 
 <!-- TODO: add links/prices and anything I've missed -->
