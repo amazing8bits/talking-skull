@@ -15,7 +15,7 @@
 | 1 | 3 A fuse and inline holder | Amp protection | On the 12 V line to the amp |
 | 1 | Peerless PLS-P830983, 2" 4 Ω full-range | Speaker | Inside the skull |
 | 1 | Triad Magnetics WSU060-4000 (6 V, 4 A, 24 W wall adapter) | Servo power | Regulated; 2.1 × 5.5 mm plug, center positive. Not the WSX060-4000, which has a 2.5 mm center-negative plug. Check the output with a meter before connecting the servos |
-| 1 | 2.1 × 5.5 mm barrel jack to screw terminal adapter | Servo power | Connects the adapter to the servo rail |
+| 2 | 2.1 × 5.5 mm barrel jack to screw terminal adapter | Servo and amp power | One for the servo rail, one for the amp |
 | 1 | ~1000 µF electrolytic capacitor, 10 V or higher | Servo rail | Across the servo rail near the servos, to absorb current spikes |
 | — | 20 AWG power wire, 24–26 AWG signal wire | | |
 
