@@ -1,8 +1,16 @@
 # Talking Skull 💀
 
-An animatronic talking skull that notices people walking up, turns to look at them, and talks with them. The skull hears you, thinks with Claude, and answers back with a moving jaw and animated LCD eyes.
+An animatronic talking skull that notices people walking up, turns its head to look at them, and holds a real conversation. It hears visitors through a far-field mic array, thinks with Claude, and answers out loud in a theatrical villain's voice, with a servo-driven jaw synced to every syllable and lifelike animated eyes that glance, blink and narrow while it thinks.
 
-Built for Halloween 2026 trick-or-treaters. Next stop: Maker Faire Philadelphia.
+It was built into a plastic Halloween skeleton for trick-or-treaters on Halloween 2026, where it was a hit. Next stop: Maker Faire Philadelphia.
+
+**Highlights**
+- **Notices you before you speak.** A 24 GHz mmWave radar tracks up to three people. When someone steps into range, the eyes wake up with a blink, the head turns to follow them, and the skull greets them.
+- **Real conversation.** Speech is transcribed on the Mac with Whisper, so no audio leaves the house. Claude writes the replies in character, and the skull starts speaking as soon as the first sentence arrives instead of waiting for the whole answer.
+- **Family-friendly by design.** The persona is spooky-fun but never frightening or mean, compliments costumes extravagantly, and never asks for names, addresses or other personal details.
+- **Jaw that actually talks.** The jaw opens once per syllable, wider for louder ones, and moves slightly ahead of the audio to make up for servo travel time.
+- **Eyes that look alive.** Original procedurally generated eyes with a polar-mapped iris, so the pupils dilate and contract smoothly. The eyes lead the head toward a visitor, glance up and aside while "thinking," hold steady while listening, and blink at natural intervals.
+- **Runs itself.** One double-click (or a Login Item) starts it, it restarts on crashes, and it waits for the next group to leave before greeting again.
 
 <!-- Add a photo or GIF here: docs/images/skull.jpg -->
 
@@ -33,7 +41,12 @@ The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and au
 | [`hardware/`](hardware/) | Bill of materials, wiring and pinout, power |
 | [`hardware/cad/`](hardware/cad/) | 3D-printable parts (jaw servo bracket and others) |
 | [`tools/eyegen/`](tools/eyegen/) | Generator for the original eye artwork |
-| [`docs/`](docs/) | Build notes, lessons learned, roadmap |
+| [`docs/build.md`](docs/build.md) | Step-by-step build guide: drivetrain, jaw, eyes, radar, audio, power, tuning and troubleshooting |
+| [`docs/`](docs/) | Diagrams, images and roadmap |
+
+## Building one
+
+The full build, including mechanical steps, calibration, tuning and troubleshooting, is in **[docs/build.md](docs/build.md)**.
 
 ## Quick start
 
@@ -66,7 +79,7 @@ Full details are in [`hardware/BOM.md`](hardware/BOM.md) and [`hardware/wiring.m
 
 ## Roadmap
 
-See [`docs/roadmap.md`](docs/roadmap.md). Highlights: a camera to recognize costumes (night vision is the hard part), a Zoom guest appearance through Zoom RTMS, and the Maker Faire Philly exhibit.
+See [`docs/roadmap.md`](docs/roadmap.md). Highlights: turning toward whoever is speaking, a camera to recognize costumes, gesturing arms, video-call appearances, and the Maker Faire Philly exhibit.
 
 ## License
 
