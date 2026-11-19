@@ -32,8 +32,10 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 | 1 pack (2) | 1/4" ID flanged ball bearing, 3/8" OD, 1/8" thick | ServoCity 1601-0001-0250 | |
 | 1 | 1/4" round servo shaft, 25-tooth spline, 33 mm long | ServoCity 1911-0025-0250 | Fits the HS-488HB's 25T spline |
 | 1 pack (2) | Flexible shaft coupler, 6.35 mm to 6.35 mm bore, L25 × D20 mm | uxcell | Joins the servo shaft to the 1/4" neck rod |
-| 1 | 1314 Series steel set-screw hub, 1/4" bore | goBILDA 1314-0016-0250 | |
-| 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | |
-| 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | Clamps onto the 1/4" rod where it exits the top of the aluminum tube, at the bottom of the skull |
+| 1 | 1314 Series steel set-screw hub, 1/4" bore | goBILDA 1314-0016-0250 | Fixed to the rod above the collar; the square beam bolts to it |
+| 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | Bolts to the hub and fits into a 3D-printed bracket that secures it to the skull, so the skull turns with the rod |
+| 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | Clamps onto the 1/4" rod where it exits the top of the aluminum tube, at the bottom of the skull, and takes the weight of the head |
+
+**How it goes together:** the rod runs up through the aluminum tube. Where it comes out at the bottom of the skull, the clamping collar grips the rod and carries the weight of the head. Above the collar, the set-screw hub is fixed to the rod, the square beam bolts to the hub, and the beam fits into a 3D-printed bracket that secures it to the skull.
 
 <!-- TODO: add links/prices and anything I've missed -->
