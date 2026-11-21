@@ -21,6 +21,19 @@
 
 The ESP32 gets its power and serial link from the Mac mini's USB port, so the build no longer needs a battery or buck converters. Each part runs from its own mains adapter.
 
+## Fasteners and consumables
+
+| Qty | Part | Used for |
+|---|---|---|
+| 4 | M2 brass heat-set inserts | Speaker bracket; pressed into the print with a soldering iron |
+| 4 | M2 screws | Speaker to its bracket |
+| 2 | M2 screws | Jaw servo's mounting ears (2-56 is too big for the holes) |
+| — | Car-speaker sealing tape (foam gasket) | Between the speaker and its bracket, to decouple it from the skull |
+| — | Double-sided tape, cut into small strips | Holding the acrylic lenses to the eye displays |
+| — | High-temp hot glue sticks | Eye displays, brackets and jaw lever wrap |
+| — | Loctite | Securing the flanged bearings in the aluminum tube |
+| — | PETG filament | 3D-printed brackets |
+
 ## Mechanical (jaw linkage)
 
 | Qty | Part | Brand / part no. | Notes |
