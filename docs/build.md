@@ -73,7 +73,7 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 
 The HS-65MG micro servo opens the jaw through a short pushrod.
 
-- **Bracket:** a two-piece cradle-and-cap bracket designed in Fusion 360 and printed in PLA. The split line is at the servo's mounting ears so the servo can come out for service. The bracket's feet are small and conform to the skull's curve, and they're hot-glued to the inside of the skull.
+- **Bracket:** a two-piece cradle-and-cap bracket designed in Fusion 360 and printed in PLA. The split line is at the servo's mounting ears so the servo can come out for service. The bracket is hot-glued to the inside of the skull and also held by **two M2.6 × 10 mm self-tapping screws**, driven from the roof of the skull's mouth up into the bracket. The screws carry the load; the glue fills gaps and stops rattles.
 ![HS-65MG seated in its 3D-printed bracket](images/jaw-servo-bracket.jpg)
 
 *The HS-65MG seated in its 3D-printed bracket, with the ball stud on the servo horn that the jaw's ball link snaps onto.*
