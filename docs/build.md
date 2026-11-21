@@ -107,9 +107,9 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 4. **Mount the servo:** it sits sandwiched between the spine and the back of the skeleton. Pack it in with plenty of hot glue so it's held tightly and can't shift or twist. Any movement of the servo body is lost head motion and puts side load on the coupler.
 
 **Build the drivetrain**
-1. Cut the 5/8" OD aluminum tube to length (about **7"** on this skeleton; the 1 ft length from OnlineMetals leaves spare) with a hacksaw, using a little 3-in-1 oil on the blade, then deburr both ends inside and out.
+1. Clamp the 5/8" OD aluminum tube in a vise and cut it to length (about **7"** on this skeleton; the 1 ft length from OnlineMetals leaves spare) with a hacksaw. Aluminum is soft enough to cut dry. Deburr both ends inside and out.
 2. Fit a flanged ball bearing into each end of the tube, flange facing out, and secure them with Loctite.
-3. Cut the 1/4" stainless rod to length. File a small flat where each set screw lands (coupler, hub) so the screws grip and the rod can't slip.
+3. Clamp the 1/4" stainless rod in a vise and cut it to length with a hacksaw, with a little 3-in-1 oil on the blade since the steel is much harder. File a small flat where each set screw lands (coupler, hub) so the screws grip and the rod can't slip.
 4. At the bottom: 25T servo shaft into the HS-488HB, flexible coupler joining it to the rod. Leave a **~1 mm gap** between the coupler and the bottom bearing so the coupler never pushes up on it.
 5. At the top: slide the **clamping collar** onto the rod where it comes out of the tube, rest it on the top bearing, and tighten it. The collar carries the head's weight, so the servo and coupler never do.
 6. **Spin test:** turn the rod by hand. If it spins freely, the collar is only touching the bearing's inner race and you're done. If it drags, the collar is rubbing the bearing's outer race or flange, and you need a thin spacer that only touches the inner race (a 3D-printed ring works). On this build it spun freely with no spacer.
