@@ -28,7 +28,9 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 | 4 | M2 brass heat-set inserts | Speaker bracket; pressed into the print with a soldering iron |
 | 4 | M2 screws | Speaker to its bracket |
 | 2 | M2 screws | Jaw servo's mounting ears (2-56 is too big for the holes) |
-| 4 | M4 screws | Clamping the two halves of the printed neck bracket around the square beam |
+| 2 | M4 screws | Square beam to the servo hub, through beam holes 2 and 4 |
+| 2 | M4 screws | Through the neck bracket halves and beam holes 1 and 5, clamping the beam in the bracket |
+| 2 | M4 brass heat-set inserts | In one half of the neck bracket, for the clamping screws |
 | — | Car-speaker sealing tape (foam gasket) | Between the speaker and its bracket, to decouple it from the skull |
 | — | Double-sided tape, cut into small strips | Holding the acrylic lenses to the eye displays |
 | — | High-temp hot glue sticks | Eye displays, brackets and jaw lever wrap |
@@ -52,11 +54,11 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 | 1 | 1/4" round servo shaft, 25-tooth spline, 33 mm long | ServoCity 1911-0025-0250 | Fits the HS-488HB's 25T spline |
 | 1 pack (2) | Flexible shaft coupler, 6.35 mm to 6.35 mm bore, L25 × D20 mm | uxcell | Joins the servo shaft to the 1/4" neck rod |
 | 1 | 1314 Series steel set-screw hub, 1/4" bore | goBILDA 1314-0016-0250 | Fixed to the rod above the collar; the square beam bolts to it |
-| 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | Bolts to the hub; the two-piece printed neck bracket clamps around it with M4 screws and secures it to the skull, so the skull turns with the rod |
+| 1 | 1106 Series square beam, 5 hole, 40 mm long | goBILDA 1106-0005-0040 | Bolts to the hub through holes 2 and 4; the two-piece printed neck bracket sandwiches it with M4 screws through holes 1 and 5, securing it to the skull so the skull turns with the rod |
 | 1 | Aluminum clamping collar, 1/4" bore | ServoCity 2910-0001-0250 | Clamps onto the 1/4" rod where it exits the top of the aluminum tube, at the bottom of the skull, and takes the weight of the head. Sits directly on the top bearing; a spin test confirmed it turns freely, so no spacer is needed |
 
 ![Neck drivetrain cross-section](../docs/images/neck_drivetrain.svg)
 
-**How it goes together:** the rod runs up through the aluminum tube, turning in a flanged ball bearing at each end. Where it comes out at the bottom of the skull, the clamping collar grips the rod and carries the weight of the head. Above the collar, the set-screw hub is fixed to the rod, the square beam bolts to the hub, and the two halves of a 3D-printed neck bracket clamp around the beam with M4 screws and secure it to the skull.
+**How it goes together:** the rod runs up through the aluminum tube, turning in a flanged ball bearing at each end. Where it comes out at the bottom of the skull, the clamping collar grips the rod and carries the weight of the head. Above the collar, the set-screw hub is fixed to the rod, the square beam bolts to the hub through holes 2 and 4, and the two halves of a 3D-printed neck bracket sandwich the beam with M4 screws through holes 1 and 5 into heat-set inserts, securing it to the skull. Two holes drilled in the back of the skull let an Allen key reach those screws.
 
 <!-- TODO: add links/prices and anything I've missed -->

@@ -9,6 +9,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 **Starting skeleton and mods.** This skeleton came with LED eyes, which were removed to make room for the LCDs. Their openings were already the right place and size for the displays, so the eye sockets needed no cutting. The rest of the changes:
 
 - **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
+- **Wrench holes:** two small holes drilled in the back of the skull so an Allen key can reach the neck bracket screws.
 - **Neck lock:** the locking nubs in the neck, which kept the head from turning, ground off with a Dremel so the head rotates freely.
 - **Neck and spine:** the original neck post and blocking screw posts removed, and plastic ground out of the inside of the neck and spine with a Dremel to make room for the drivetrain and servo. The servo is larger than the space in the spine, so a cutout was made in the back of the spine for it.
 - **Jaw:** a screw that locked the jaw shut removed. The skeleton was molded with a jaw lever and mounting points for a talking speaker that was never installed; that original lever is kept and wrapped in aluminum to take the ball link.
@@ -53,8 +54,9 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 4. At the bottom: 25T servo shaft into the HS-488HB, flexible coupler joining it to the rod. Leave a **~1 mm gap** between the coupler and the bottom bearing so the coupler never pushes up on it.
 5. At the top: slide the **clamping collar** onto the rod where it comes out of the tube, rest it on the top bearing, and tighten it. The collar carries the head's weight, so the servo and coupler never do.
 6. **Spin test:** turn the rod by hand. If it spins freely, the collar is only touching the bearing's inner race and you're done. If it drags, the collar is rubbing the bearing's outer race or flange, and you need a thin spacer that only touches the inner race (a 3D-printed ring works). On this build it spun freely with no spacer.
-7. Inside the skull, fix the **set-screw hub** to the rod above the skull post, leaving a clear gap above the post. Bolt the **square beam** to the hub.
-8. The beam is held by a **two-piece 3D-printed neck bracket** in the base of the skull. The two halves clamp around the beam and are screwed together with **M4 screws**, so the chain runs servo hub → square beam → bracket → skull, and the skull turns with the rod.
+7. Inside the skull, fix the **set-screw hub** to the rod above the skull post, leaving a clear gap above the post. Bolt the 5-hole **square beam** to the hub with **two M4 screws through holes 2 and 4** of the beam.
+8. The beam is sandwiched in a **two-piece 3D-printed neck bracket** in the base of the skull. One bracket half has **two M4 heat-set inserts**. Two M4 screws pass through the other half, through **holes 1 and 5** of the beam, and into those inserts, clamping the beam between the halves. The chain runs servo hub → square beam → bracket → skull, so the skull turns with the rod.
+9. **Wrench access:** with the skull closed you can't reach those two bracket screws, so **drill two holes in the back of the skull**, lined up with the screws, big enough for an Allen key. Then you can tighten or loosen the bracket without opening the head.
 
 **Before you tighten the hub for good:** power the servo at center (1500 µs, `NECKUS 1500` from the Serial Monitor) and set the beam's orientation so the skull faces straight ahead. Then check the full pan range for anything that touches: the collar's pinch bolt, the hub and the wires.
 
