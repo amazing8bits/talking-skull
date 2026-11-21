@@ -6,9 +6,10 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 **Starting skeleton and mods.** This skeleton came with LED eyes, which were removed to make room for the LCDs. Their openings were already the right place and size for the displays, so the eye sockets needed no cutting. The rest of the changes:
 
-- **Skull:** opened along its front/back seam; a square opening cut in the back half for the speaker enclosure; the skull post's hole drilled out to 3/8" for the neck rod.
+- **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
+- **Neck lock:** the locking nubs in the neck, which kept the head from turning, ground off with a Dremel so the head rotates freely.
 - **Neck and spine:** the original neck post and blocking screw posts removed; the upper spine opened to fit the neck servo, coupler and aluminum tube.
-- **Jaw:** the original plastic jaw lever kept and wrapped in aluminum to take the ball link.
+- **Jaw:** a screw that locked the jaw shut removed. The skeleton was molded with a jaw lever and mounting points for a talking speaker that was never installed; that original lever is kept and wrapped in aluminum to take the ball link.
 
 ![The finished skull on the bench](images/skull-assembled.jpg)
 
@@ -16,7 +17,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 ![The two skull halves opened up and cleared out](images/skull-halves-prepped.jpg)
 
-*The skull halves opened up. The back half (top) has a square opening cut for the speaker; the front half keeps the original jaw pivot.*
+*The skull halves opened up. In the back half (top), the battery holder has been cut out to make room for the speaker; the front half keeps the original jaw lever and pivot.*
 
 ## 1. Know your plastic
 
@@ -119,7 +120,8 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 
 ![Speaker in its enclosure and the TPA3116D2 amp](images/speaker-and-amp.jpg)
 
-*The 2" driver in a 3D-printed enclosure, fitted into the opening cut in the back of the skull, with the TPA3116D2 amp board.*
+*The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
+- **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M2 screws** into **M2 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
 - **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
 - **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable into the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
 

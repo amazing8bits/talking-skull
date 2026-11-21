@@ -51,7 +51,7 @@ The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and au
 | | | |
 |---|---|---|
 | ![Neck drivetrain](docs/images/neck-drivetrain-installed.jpg) | ![Jaw linkage](docs/images/jaw-linkage.jpg) | ![Speaker and amp](docs/images/speaker-and-amp.jpg) |
-| Neck drivetrain: servo in the spine, rod in the aluminum tube, hub and beam in the skull | Jaw linkage: aluminum-wrapped lever and 2-56 ball link | 2" speaker in a printed enclosure, and the TPA3116D2 amp |
+| Neck drivetrain: servo in the spine, rod in the aluminum tube, hub and beam in the skull | Jaw linkage: aluminum-wrapped lever and 2-56 ball link | 2" speaker in a printed bracket, and the TPA3116D2 amp |
 
 ## Building one
 
