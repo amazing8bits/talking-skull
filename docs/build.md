@@ -22,6 +22,8 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 *The skull halves opened up. In the back half (top), the battery holder has been cut out to make room for the speaker; the front half keeps the original jaw lever and pivot.*
 
+**Build order:** eyes first (wired to the ESP32 and tested), then the jaw servo and bracket, then the neck drivetrain, then the mic array, and the radar last. The sections below follow that order.
+
 ## 1. Know your plastic
 
 The skull and jaw plastic floats in water and has a firm, glossy surface, which means it's a polyolefin (polypropylene or polyethylene). Most glues won't stick to it, so:
@@ -31,7 +33,50 @@ The skull and jaw plastic floats in water and has a firm, glossy surface, which 
 - Hot glue softens around 60 °C, so keep the finished prop out of direct afternoon sun and hot cars or attics.
 - If you want a stronger, permanent bond, 3M DP8005/DP8010 is made for polyolefins, but it's expensive.
 
-## 2. Neck pan drivetrain
+## 2. Eyes
+
+- Two 1.28" round GC9A01 displays sit behind the eye sockets, in the openings left by the skeleton's original LED eyes, each covered by a **35 mm acrylic lens**. The lens magnifies the image slightly and gives it a wet, rounded look.
+- **Lenses:** each lens is stuck to the face of its display with a few **small strips of double-sided tape** around the edge, keeping the tape off the visible part of the screen. The displays are then hot-glued in behind the sockets.
+- Both displays share SPI clock, data, DC and reset; each has its own chip select. The pins are in [`wiring.md`](../hardware/wiring.md).
+- They're mounted upside down, so the sketch rotates them 180°. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
+- The eye artwork is generated procedurally by [`tools/eyegen`](../tools/eyegen/), so it's original and free to share. The renderer runs on core 0 of the ESP32 so it never delays the servos or radar.
+- If the eyes look away from visitors, flip `EYE_INVERT_X` in the sketch.
+- **Connect and test right away.** Wire both displays to the ESP32 (pins in [`wiring.md`](../hardware/wiring.md)), upload the sketch, and send `EYES 1` and `GAZE 50 -20` from the Serial Monitor. It's much easier to fix a display or wiring problem now than with everything else in the skull.
+
+![Both eye displays hot-glued behind the sockets](images/eyes-mounted.jpg)
+
+*The two GC9A01 displays hot-glued directly behind the eye sockets.*
+
+![Eye display wiring with connectors](images/eye-wiring.jpg)
+
+*Each display's wiring ends in a connector, so the front half of the skull can be unplugged and separated.*
+
+## 3. Jaw
+
+The HS-65MG micro servo opens the jaw through a short pushrod.
+
+- **Bracket:** a one-piece bracket designed in Fusion 360 and printed in PLA, with a pocket the servo sits in. The bracket is hot-glued to the inside of the skull and also held by **two M2.6 × 10 mm self-tapping screws**, driven from the roof of the skull's mouth up into the bracket. The screws carry the load; the glue fills gaps and stops rattles.
+![HS-65MG seated in its 3D-printed bracket](images/jaw-servo-bracket.jpg)
+
+*The HS-65MG seated in its 3D-printed bracket, with the ball stud on the servo horn that the jaw's ball link snaps onto.*
+
+- **Servo screws:** the servo is fastened to the bracket with **M2 screws into M2 heat-set inserts** in the print. The HS-65MG's ear holes are too small for M2, so **drill out one hole in each ear** to fit.
+- **Servo horn:** the hole in the HS-65MG's horn was too small for the ball link's ball stud, so it was drilled out slightly. Go up in small steps until the stud threads in snugly, since a loose stud adds play to the jaw.
+- **Jaw lever:** the skeleton's plastic jaw lever is wrapped in thin aluminum to give the linkage a solid mounting point. The wrap is hot-glued and clamped with small screws.
+- **Linkage:** two Du-Bro 2-56 threaded ball links on a short 2-56 rod (cut from a 2-56 × 1" screw). Ball links have no free play, so the jaw starts moving on each syllable instead of rattling first, and the rod threads in and out to adjust the closed position.
+- Aim for the pushrod to sit roughly perpendicular to both the servo horn and the jaw lever at mid-travel, so the motion stays even across the sweep.
+
+![Jaw with the aluminum-wrapped lever and ball-link pushrod](images/jaw-linkage.jpg)
+
+*The jaw on the bench: aluminum wrap on the plastic lever, a Du-Bro ball link on 2-56 rod, and the HS-65MG.*
+
+![Jaw lever and ball link installed next to the right eye](images/eye-and-jaw-lever.jpg)
+
+*Installed: the ball link on the wrapped jaw lever, next to the hot-glued eye display.*
+
+**Connect** the servo's signal wire to GPIO 4 on the ESP32 (power from the servo supply, not the ESP32; see [Power](#7-power)), then **calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
+
+## 4. Neck pan drivetrain
 
 The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that runs up the neck inside a fixed aluminum tube.
 
@@ -69,57 +114,7 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 
 > ⚠️ The HS-488HB has no mechanical stops. Neck travel is limited in firmware by `NECK_MAX_DEG` (40°). Never remove that limit.
 
-## 3. Jaw
-
-The HS-65MG micro servo opens the jaw through a short pushrod.
-
-- **Bracket:** a one-piece bracket designed in Fusion 360 and printed in PLA, with a pocket the servo sits in. The bracket is hot-glued to the inside of the skull and also held by **two M2.6 × 10 mm self-tapping screws**, driven from the roof of the skull's mouth up into the bracket. The screws carry the load; the glue fills gaps and stops rattles.
-![HS-65MG seated in its 3D-printed bracket](images/jaw-servo-bracket.jpg)
-
-*The HS-65MG seated in its 3D-printed bracket, with the ball stud on the servo horn that the jaw's ball link snaps onto.*
-
-- **Servo screws:** the servo is fastened to the bracket with **M2 screws into M2 heat-set inserts** in the print. The HS-65MG's ear holes are too small for M2, so **drill out one hole in each ear** to fit.
-- **Servo horn:** the hole in the HS-65MG's horn was too small for the ball link's ball stud, so it was drilled out slightly. Go up in small steps until the stud threads in snugly, since a loose stud adds play to the jaw.
-- **Jaw lever:** the skeleton's plastic jaw lever is wrapped in thin aluminum to give the linkage a solid mounting point. The wrap is hot-glued and clamped with small screws.
-- **Linkage:** two Du-Bro 2-56 threaded ball links on a short 2-56 rod (cut from a 2-56 × 1" screw). Ball links have no free play, so the jaw starts moving on each syllable instead of rattling first, and the rod threads in and out to adjust the closed position.
-- Aim for the pushrod to sit roughly perpendicular to both the servo horn and the jaw lever at mid-travel, so the motion stays even across the sweep.
-
-![Jaw with the aluminum-wrapped lever and ball-link pushrod](images/jaw-linkage.jpg)
-
-*The jaw on the bench: aluminum wrap on the plastic lever, a Du-Bro ball link on 2-56 rod, and the HS-65MG.*
-
-![Jaw lever and ball link installed next to the right eye](images/eye-and-jaw-lever.jpg)
-
-*Installed: the ball link on the wrapped jaw lever, next to the hot-glued eye display.*
-
-**Calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
-
-## 4. Eyes
-
-- Two 1.28" round GC9A01 displays sit behind the eye sockets, in the openings left by the skeleton's original LED eyes, each covered by a **35 mm acrylic lens**. The lens magnifies the image slightly and gives it a wet, rounded look.
-- **Lenses:** each lens is stuck to the face of its display with a few **small strips of double-sided tape** around the edge, keeping the tape off the visible part of the screen. The displays are then hot-glued in behind the sockets.
-- Both displays share SPI clock, data, DC and reset; each has its own chip select. The pins are in [`wiring.md`](../hardware/wiring.md).
-- They're mounted upside down, so the sketch rotates them 180°. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
-- The eye artwork is generated procedurally by [`tools/eyegen`](../tools/eyegen/), so it's original and free to share. The renderer runs on core 0 of the ESP32 so it never delays the servos or radar.
-- If the eyes look away from visitors, flip `EYE_INVERT_X` in the sketch.
-
-![Both eye displays hot-glued behind the sockets](images/eyes-mounted.jpg)
-
-*The two GC9A01 displays hot-glued directly behind the eye sockets.*
-
-![Eye display wiring with connectors](images/eye-wiring.jpg)
-
-*Each display's wiring ends in a connector, so the front half of the skull can be unplugged and separated.*
-
-## 5. Radar
-
-- The HLK-LD2450 reports up to three people's X/Y positions about 10 times a second, across roughly ±60°.
-- It's hot-glued to the **ribcage**, not the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
-- Radar passes through plastic but not metal. Keep metallic paint, foil and wiring out of the area in front of it.
-- It needs **5 V power** but uses **3.3 V UART**, so it wires straight to the ESP32. If the Serial Monitor shows `# radar: NO DATA`, swap the RX and TX pins.
-- Tune the trigger zone with `ZONE_MAX_Y` (how far out) and `ZONE_MAX_X` (how wide). If the head turns away from people, flip `NECK_INVERT`.
-
-## 6. Audio
+## 5. Audio: mic array and speaker
 
 - **Mic:** the Seeed reSpeaker XVF3800 bare board is hot-glued to the front of the ribcage and connects to the Mac over USB. It ships with I2S firmware, so flash the **USB firmware** first, or it won't show up on the Mac. The mic openings are on the back (logo) side, so that side has to face the visitors.
 - **Not hearing itself:** the Mac plays the skull's voice *through the mic array* over USB (`--out-device ReSpeaker`), and the array's **3.5 mm output jack feeds the amp's input**. Because the array plays the voice itself, its echo cancellation has the exact reference signal and filters the skull's own voice out of what the mics pick up. As a second safeguard, `skull.py` also only listens while the skull isn't talking.
@@ -132,6 +127,14 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 - **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M4 screws** into **M4 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
 - **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
 - **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable from the mic array to the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
+
+## 6. Radar
+
+- The HLK-LD2450 reports up to three people's X/Y positions about 10 times a second, across roughly ±60°.
+- It's hot-glued to the **ribcage**, not the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
+- Radar passes through plastic but not metal. Keep metallic paint, foil and wiring out of the area in front of it.
+- It needs **5 V power** but uses **3.3 V UART**, so it wires straight to the ESP32. If the Serial Monitor shows `# radar: NO DATA`, swap the RX and TX pins.
+- Tune the trigger zone with `ZONE_MAX_Y` (how far out) and `ZONE_MAX_X` (how wide). If the head turns away from people, flip `NECK_INVERT`.
 
 ## 7. Power
 
@@ -186,5 +189,5 @@ All in the settings block at the top of `skull.py`:
 | Head turns away from people | Flip `NECK_INVERT` |
 | Jaw buzzes when closed | `JAW_CLOSED_US` drives it into its stop; back it off |
 | ESP32 resets when servos move | Servos are drawing from USB; give them their own supply |
-| Speaker buzz or hum | See [Audio](#6-audio) |
+| Speaker buzz or hum | See [Audio](#5-audio-mic-array-and-speaker) |
 | Whisper hears words in silence | Common phantom phrases are already filtered in `HALLUCINATIONS`; add any new ones there |
