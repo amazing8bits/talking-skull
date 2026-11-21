@@ -25,12 +25,13 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 
 | Qty | Part | Used for |
 |---|---|---|
-| 6 | M2 brass heat-set inserts | 4 in the speaker bracket, 2 in the jaw servo bracket; pressed into the print with a soldering iron |
-| 4 | M2 screws | Speaker to its bracket |
+| 2 | M2 brass heat-set inserts | Jaw servo bracket; pressed into the print with a soldering iron |
 | 2 | M2 screws | Jaw servo to its bracket, through one drilled-out hole in each mounting ear |
 | 2 | M4 screws | Square beam to the servo hub, through beam holes 2 and 4 |
 | 2 | M4 screws | Through the neck bracket halves and beam holes 1 and 5, clamping the beam in the bracket |
 | 2 | M4 brass heat-set inserts | In one half of the neck bracket, for the clamping screws |
+| 4 | M4 screws | Speaker to its bracket |
+| 4 | M4 brass heat-set inserts | Speaker bracket; pressed into the print with a soldering iron |
 | 2 | M2.6 × 10 mm self-tapping screws | Jaw servo bracket, driven up through the roof of the skull's mouth |
 | — | Car-speaker sealing tape (foam gasket) | Between the speaker and its bracket, to decouple it from the skull |
 | — | Double-sided tape, cut into small strips | Holding the acrylic lenses to the eye displays |

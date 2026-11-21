@@ -129,7 +129,7 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 ![Speaker in its bracket and the TPA3116D2 amp](images/speaker-and-amp.jpg)
 
 *The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
-- **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M2 screws** into **M2 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
+- **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M4 screws** into **M4 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
 - **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
 - **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable from the mic array to the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
 
