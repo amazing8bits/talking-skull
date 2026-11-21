@@ -36,7 +36,7 @@ The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs
 
 ![The drivetrain installed in the cut-open spine](images/neck-drivetrain-installed.jpg)
 
-*The finished drivetrain with the spine cut open: HS-488HB at the bottom, flexible coupler, aluminum tube, then the collar, hub and square beam in the black 3D-printed bracket at the base of the skull. The speaker enclosure is in the back half on the left.*
+*The finished drivetrain with the spine cut open: HS-488HB at the bottom, flexible coupler, aluminum tube, then the collar, hub and square beam in the black 3D-printed bracket at the base of the skull. The speaker in its bracket is in the back half on the left.*
 
 **Prepare the skeleton**
 1. Remove the skeleton's original neck post and any screw posts that block the tube. The upper neck halves on this skeleton are screwed together, not glued, so they come apart.
@@ -118,7 +118,7 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 - **Not hearing itself:** the XVF3800's echo cancellation needs the speaker audio as a reference, which it doesn't get with a separate amp. Instead, `skull.py` only listens while the skull isn't talking.
 - **Speaker:** a Peerless PLS-P830983 2" full-range driver inside the skull, driven by a TPA3116D2 amp next to the Mac. The amp's speaker outputs are bridged, so never connect either speaker wire to ground.
 
-![Speaker in its enclosure and the TPA3116D2 amp](images/speaker-and-amp.jpg)
+![Speaker in its bracket and the TPA3116D2 amp](images/speaker-and-amp.jpg)
 
 *The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
 - **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M2 screws** into **M2 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
