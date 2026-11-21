@@ -38,4 +38,4 @@ Mains ──▶ MEAN WELL GSM36U12-P1J (12 V 3 A) ──[3 A fuse]──▶ TPA3
 - **Cable entry:** the neck servo wires, the radar wires, the ESP32's USB cable and the jaw servo's power cable enter the skull through holes drilled in the back.
 - **Radar:** four wires soldered to its pads (5 V, GND, TX, RX), spliced to DuPont connectors at the ESP32 end.
 - **Wire:** 2-conductor 20 AWG for power (servo supply to the servos, 12 V supply to the amp), 2-conductor 22 AWG from the amp to the speaker, and DuPont jumpers for signals.
-- **Ground-loop buzz:** if you hear a buzz from the speaker, check that servo current is not flowing through the USB ground (see above), then check the audio ground path. <!-- TODO: note the fix used -->
+- **Ground-loop buzz:** this build avoids it by giving the servos and the amp **separate power supplies** (the 6 V Triad for the servos, the 12 V MEAN WELL for the amp), so servo current never shares a path with the audio. No ground-loop isolator was needed. If you still hear a buzz, check that servo current isn't flowing through the USB ground (see above); a 3.5 mm ground-loop isolator between the mic array and the amp is the fallback.

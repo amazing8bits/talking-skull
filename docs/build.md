@@ -88,7 +88,7 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 *The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
 
 - **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
-- **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable from the mic array to the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
+- **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). This build avoids buzz by running the servos and the amp from **separate power supplies**, with no ground-loop isolator. If you still get buzz, an isolator on the 3.5 mm cable from the mic array to the amp is the usual fix. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
 
 ## 5. Neck pan drivetrain
 
