@@ -61,6 +61,7 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 *The HS-65MG seated in its 3D-printed bracket, with the ball stud on the servo horn that the jaw's ball link snaps onto.*
 
 - **Servo screws:** the HS-65MG's ear holes take **M2** screws. 2-56 is slightly too big.
+- **Servo horn:** the hole in the HS-65MG's horn was too small for the ball link's ball stud, so it was drilled out slightly. Go up in small steps until the stud threads in snugly, since a loose stud adds play to the jaw.
 - **Jaw lever:** the skeleton's plastic jaw lever is wrapped in thin aluminum to give the linkage a solid mounting point. The wrap is hot-glued and clamped with small screws.
 - **Linkage:** two Du-Bro 2-56 threaded ball links on a short 2-56 rod (cut from a 2-56 × 1" screw). Ball links have no free play, so the jaw starts moving on each syllable instead of rattling first, and the rod threads in and out to adjust the closed position.
 - Aim for the pushrod to sit roughly perpendicular to both the servo horn and the jaw lever at mid-travel, so the motion stays even across the sweep.
