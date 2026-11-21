@@ -111,14 +111,14 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 ## 5. Radar
 
 - The HLK-LD2450 reports up to three people's X/Y positions about 10 times a second, across roughly ±60°.
-- Mount it in the **fixed base or chest**, not in the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
+- It's hot-glued to the **ribcage**, not the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
 - Radar passes through plastic but not metal. Keep metallic paint, foil and wiring out of the area in front of it.
 - It needs **5 V power** but uses **3.3 V UART**, so it wires straight to the ESP32. If the Serial Monitor shows `# radar: NO DATA`, swap the RX and TX pins.
 - Tune the trigger zone with `ZONE_MAX_Y` (how far out) and `ZONE_MAX_X` (how wide). If the head turns away from people, flip `NECK_INVERT`.
 
 ## 6. Audio
 
-- **Mic:** the Seeed reSpeaker XVF3800 bare board connects to the Mac over USB. It ships with I2S firmware, so flash the **USB firmware** first, or it won't show up on the Mac. The mic openings are on the back (logo) side, so that side has to face the visitors.
+- **Mic:** the Seeed reSpeaker XVF3800 bare board is hot-glued to the front of the ribcage and connects to the Mac over USB. It ships with I2S firmware, so flash the **USB firmware** first, or it won't show up on the Mac. The mic openings are on the back (logo) side, so that side has to face the visitors.
 - **Not hearing itself:** the XVF3800's echo cancellation needs the speaker audio as a reference, which it doesn't get with a separate amp. Instead, `skull.py` only listens while the skull isn't talking.
 - **Speaker:** a Peerless PLS-P830983 2" full-range driver inside the skull, driven by a TPA3116D2 amp next to the Mac. The amp's speaker outputs are bridged, so never connect either speaker wire to ground.
 
