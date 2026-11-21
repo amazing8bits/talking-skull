@@ -6,7 +6,7 @@
 | 1 | HLK-LD2450 24 GHz mmWave radar | Presence and position tracking | UART at 256000 baud; mounted in the fixed base/chest so it stays still when the head turns |
 | 2 | 1.28" GC9A01 round LCD, 240×240 SPI | Eyes | Pins RST, CS, DC, SDA, SCL, GND, VCC (no backlight pin) |
 | 2 | 35 mm acrylic lens | Eyes | One over each display |
-| 1 | Hitec HS-65MG micro servo | Jaw | Ball-joint linkage to the jaw lever; two-piece printed bracket |
+| 1 | Hitec HS-65MG micro servo | Jaw | Ball-joint linkage to the jaw lever; one-piece printed bracket |
 | 1 | Hitec HS-488HB servo | Neck pan | No mechanical stops: use software limits |
 | 1 | Apple Mac mini M4, 16 GB | AI/audio host | Mains-powered, hidden near the skull |
 | 1 | Seeed Studio reSpeaker XVF3800 USB Microphone Array, bare board | Microphone | Connected to the Mac over USB; `--in-device ReSpeaker` matches it by name |
