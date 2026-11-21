@@ -12,7 +12,7 @@
 | 1 | Seeed Studio reSpeaker XVF3800 USB Microphone Array, bare board | Microphone | Connected to the Mac over USB; `--in-device ReSpeaker` matches it by name |
 | 1 | TPA3116D2 amplifier board | Audio amp | Next to the Mac, powered by the 12 V adapter below |
 | 1 | MEAN WELL GSM36U12-P1J (12 V, 3 A, 36 W wall adapter) | Amp power | |
-| 1 | 3 A fuse and inline holder | Amp protection | On the 12 V line to the amp |
+| 1 | 5 × 20 mm glass fuse, 3 A fast-blow, in an inline screw-type holder | Amp protection | On the 12 V line to the amp. From a 5×20 mm inline holder and assorted fast-blow fuse kit. A 3 A slow-blow is the drop-in swap if the fast-blow ever pops at power-on |
 | 2 | USB-C cable, 6 ft | Mac mini links | One to the ESP32 (power and serial), one to the mic array (audio in and out) |
 | 1 | 3.5 mm (1/8") stereo male plug to bare-wire audio cable, right angle, 6 ft | Audio link | Plug goes into the mic array's 3.5 mm output jack; the bare wires go to the amp's input screw terminals |
 | 1 | Peerless PLS-P830983, 2" 4 Ω full-range | Speaker | Inside the skull |

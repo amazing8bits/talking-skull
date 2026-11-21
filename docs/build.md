@@ -148,7 +148,7 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 Everything runs from mains; there's no battery.
 
 - **Servos:** Triad WSU060-4000, 6 V 4 A. It plugs into a barrel-jack-to-screw-terminal adapter, and the wire from its terminals is spliced into a power lead for each servo, with a 1000 µF capacitor across the supply. Measure its output with a meter before connecting the servos.
-- **Amp:** MEAN WELL GSM36U12-P1J, 12 V 3 A, through a 3 A fuse.
+- **Amp:** MEAN WELL GSM36U12-P1J, 12 V 3 A, through a 3 A fast-blow 5 × 20 mm glass fuse in an inline holder. Slow-blow handles the amp's power-on surge better, so swap to a 3 A slow-blow if the fuse ever pops when you plug it in.
 - **ESP32, radar and eyes:** USB from the Mac mini, which is also the serial link.
 - Connect the servo ground to the ESP32 ground **in one place only**. Here, the servo supply's ground wire is spliced to a DuPont connector that plugs into an ESP32 GND pin.
 
