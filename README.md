@@ -4,6 +4,8 @@ An animatronic talking skull that notices people walking up, turns its head to l
 
 It was built into a plastic Halloween skeleton for trick-or-treaters on Halloween 2026, where it was a hit. Next stop: Maker Faire Philadelphia.
 
+> 🎬 A full build video is coming to YouTube, and the 3D-printable parts will be added to [`hardware/cad/`](hardware/cad/).
+
 **Highlights**
 - **Notices you before you speak.** A 24 GHz mmWave radar tracks up to three people. When someone steps into range, the eyes wake up with a blink, the head turns to follow them, and the skull greets them.
 - **Real conversation.** Speech is transcribed on the Mac with Whisper, so no audio leaves the house. Claude writes the replies in character, and the skull starts speaking as soon as the first sentence arrives instead of waiting for the whole answer.

@@ -4,6 +4,12 @@ How the talking skull was put together, in roughly the order it was built. Part 
 
 The prop is built into an off-the-shelf plastic anatomical skeleton. The skull splits into screwed front and back halves, and the head sits on a neck post. Your skeleton will differ, so measure before cutting anything.
 
+**Starting skeleton and mods.** This skeleton came with LED eyes, which were removed to make room for the LCDs. Their openings were already the right place and size for the displays, so the eye sockets needed no cutting. The rest of the changes:
+
+- **Skull:** opened along its front/back seam; a square opening cut in the back half for the speaker enclosure; the skull post's hole drilled out to 3/8" for the neck rod.
+- **Neck and spine:** the original neck post and blocking screw posts removed; the upper spine opened to fit the neck servo, coupler and aluminum tube.
+- **Jaw:** the original plastic jaw lever kept and wrapped in aluminum to take the ball link.
+
 ![The finished skull on the bench](images/skull-assembled.jpg)
 
 *The finished build on the bench: eye displays behind acrylic lenses, and the reSpeaker XVF3800 mic array resting on the chest.*
@@ -82,7 +88,8 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 
 ## 4. Eyes
 
-- Two 1.28" round GC9A01 displays sit behind the eye sockets, each covered by a **35 mm acrylic lens**. The lens magnifies the image slightly and gives it a wet, rounded look.
+- Two 1.28" round GC9A01 displays sit behind the eye sockets, in the openings left by the skeleton's original LED eyes, each covered by a **35 mm acrylic lens**. The lens magnifies the image slightly and gives it a wet, rounded look.
+- **Lenses:** each lens is stuck to the face of its display with a few **small strips of double-sided tape** around the edge, keeping the tape off the visible part of the screen. The displays are then hot-glued in behind the sockets.
 - Both displays share SPI clock, data, DC and reset; each has its own chip select. The pins are in [`wiring.md`](../hardware/wiring.md).
 - They're mounted upside down, so the sketch rotates them 180°. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
 - The eye artwork is generated procedurally by [`tools/eyegen`](../tools/eyegen/), so it's original and free to share. The renderer runs on core 0 of the ESP32 so it never delays the servos or radar.
