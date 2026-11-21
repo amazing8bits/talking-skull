@@ -2,7 +2,7 @@
 
 | Qty | Part | Role | Notes |
 |---|---|---|---|
-| 1 | Life-size plastic skeleton (generic, big-box store) | The body | Needs a neck joint that turns left/right (not a ball joint), a hinged jaw, and a lever inside the jaw to attach the servo. See [Choosing a skeleton](../docs/build.md) |
+| 1 | 5 ft poseable plastic skeleton (generic, big-box store) | The body | Needs a neck joint that turns left/right (not a ball joint), a hinged jaw, and a lever inside the jaw to attach the servo. See [Choosing a skeleton](../docs/build.md) |
 | 1 | Waveshare ESP32-S3 N16R8 dev kit | Skull controller | 16 MB flash / 8 MB PSRAM; single USB-C port |
 | 1 | HLK-LD2450 24 GHz mmWave radar | Presence and position tracking | UART at 256000 baud; hot-glued to the front of the spine just below the ribcage, with a clear view of visitors; wires soldered to its 4 pads and spliced to DuPont connectors |
 | 2 | 1.28" GC9A01 round LCD, 240×240 SPI | Eyes | Pins RST, CS, DC, SDA, SCL, GND, VCC (no backlight pin) |

@@ -6,7 +6,7 @@ All the printed parts (neck bracket, jaw servo bracket, speaker bracket) were pr
 
 The prop is built into an off-the-shelf plastic anatomical skeleton. The skull splits into screwed front and back halves, and the head sits on a neck post. Your skeleton will differ, so measure before cutting anything.
 
-**Choosing a skeleton.** This one is a generic plastic skeleton from a big-box store. The brand matters less than three things to check before buying:
+**Choosing a skeleton.** This one is a generic **5-foot poseable** plastic skeleton from a big-box store. The brand matters less than three things to check before buying:
 
 - **The neck turns left and right on a joint.** That's what lets a servo pan the head. Skeletons whose skull sits on a **ball joint** won't work with this drivetrain.
 - **The jaw opens on a hinge** rather than being fixed or loose.
