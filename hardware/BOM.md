@@ -54,7 +54,7 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 
 | Qty | Part | Brand / part no. | Notes |
 |---|---|---|---|
-| 1 | 6061-T6 aluminum tube, 5/8" OD × 3/8" ID | | Structural spine, replaces the skeleton's neck post |
+| 1 | 6061-T6 drawn aluminum round tube, 5/8" OD × 0.125" wall × 0.375" ID, 1 ft | OnlineMetals | Structural spine, replaces the skeleton's neck post. Cut to about 7" |
 | 1 | 0.250" (1/4") × 12.00" stainless steel precision shafting | ServoCity 2100-0250-1200 | Neck rod; carries torque only. Cut to length |
 | 1 pack (2) | 1/4" ID flanged ball bearing, 3/8" OD, 1/8" thick | ServoCity 1601-0001-0250 | One in each end of the aluminum tube, secured with Loctite; the rod turns in them |
 | 1 | 1/4" round servo shaft, 25-tooth spline, 33 mm long | ServoCity 1911-0025-0250 | Fits the HS-488HB's 25T spline |
