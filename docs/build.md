@@ -4,6 +4,10 @@ How the talking skull was put together, in roughly the order it was built. Part 
 
 The prop is built into an off-the-shelf plastic anatomical skeleton. The skull splits into screwed front and back halves, and the head sits on a neck post. Your skeleton will differ, so measure before cutting anything.
 
+![The two skull halves opened up and cleared out](images/skull-halves-prepped.jpg)
+
+*The skull halves opened up. The back half (top) has a square opening cut for the speaker; the front half keeps the original jaw pivot.*
+
 ## 1. Know your plastic
 
 The skull and jaw plastic floats in water and has a firm, glossy surface, which means it's a polyolefin (polypropylene or polyethylene). Most glues won't stick to it, so:
@@ -18,6 +22,10 @@ The skull and jaw plastic floats in water and has a firm, glossy surface, which 
 The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs up the neck inside a fixed aluminum tube.
 
 ![Neck drivetrain cross-section](images/neck_drivetrain.svg)
+
+![The drivetrain installed in the cut-open spine](images/neck-drivetrain-installed.jpg)
+
+*The finished drivetrain with the spine cut open: HS-488HB at the bottom, flexible coupler, aluminum tube, then the collar, hub and square beam in the black 3D-printed bracket at the base of the skull. The speaker enclosure is in the back half on the left.*
 
 **Prepare the skeleton**
 1. Remove the skeleton's original neck post and any screw posts that block the tube. The upper neck halves on this skeleton are screwed together, not glued, so they come apart.
@@ -35,6 +43,10 @@ The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs
 
 **Before you tighten the hub for good:** power the servo at center (1500 µs, `NECKUS 1500` from the Serial Monitor) and set the beam's orientation so the skull faces straight ahead. Then check the full pan range for anything that touches: the collar's pinch bolt, the hub and the wires.
 
+![Test-fitting the head on the drivetrain](images/drivetrain-test-fit.jpg)
+
+*Test-fitting the head on the drivetrain before closing up the spine.*
+
 **Wires** run up inside the hollow neck, outside the tube, with a small slack loop so they don't pull as the head turns.
 
 > ⚠️ The HS-488HB has no mechanical stops. Neck travel is limited in firmware by `NECK_MAX_DEG` (40°). Never remove that limit.
@@ -49,6 +61,14 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 - **Linkage:** two Du-Bro 2-56 threaded ball links on a short 2-56 rod (cut from a 2-56 × 1" screw). Ball links have no free play, so the jaw starts moving on each syllable instead of rattling first, and the rod threads in and out to adjust the closed position.
 - Aim for the pushrod to sit roughly perpendicular to both the servo horn and the jaw lever at mid-travel, so the motion stays even across the sweep.
 
+![Jaw with the aluminum-wrapped lever and ball-link pushrod](images/jaw-linkage.jpg)
+
+*The jaw on the bench: aluminum wrap on the plastic lever, a Du-Bro ball link on 2-56 rod, and the HS-65MG.*
+
+![Jaw lever and ball link installed next to the right eye](images/eye-and-jaw-lever.jpg)
+
+*Installed: the ball link on the wrapped jaw lever, next to the hot-glued eye display.*
+
 **Calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
 
 ## 4. Eyes
@@ -58,6 +78,14 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 - They're mounted upside down, so the sketch rotates them 180°. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
 - The eye artwork is generated procedurally by [`tools/eyegen`](../tools/eyegen/), so it's original and free to share. The renderer runs on core 0 of the ESP32 so it never delays the servos or radar.
 - If the eyes look away from visitors, flip `EYE_INVERT_X` in the sketch.
+
+![Both eye displays hot-glued behind the sockets](images/eyes-mounted.jpg)
+
+*The two GC9A01 displays hot-glued directly behind the eye sockets.*
+
+![Eye display wiring with connectors](images/eye-wiring.jpg)
+
+*Each display's wiring ends in a connector, so the front half of the skull can be unplugged and separated.*
 
 ## 5. Radar
 
@@ -72,6 +100,10 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 - **Mic:** the Seeed reSpeaker XVF3800 bare board connects to the Mac over USB. It ships with I2S firmware, so flash the **USB firmware** first, or it won't show up on the Mac. The mic openings are on the back (logo) side, so that side has to face the visitors.
 - **Not hearing itself:** the XVF3800's echo cancellation needs the speaker audio as a reference, which it doesn't get with a separate amp. Instead, `skull.py` only listens while the skull isn't talking.
 - **Speaker:** a Peerless PLS-P830983 2" full-range driver inside the skull, driven by a TPA3116D2 amp next to the Mac. The amp's speaker outputs are bridged, so never connect either speaker wire to ground.
+
+![Speaker in its enclosure and the TPA3116D2 amp](images/speaker-and-amp.jpg)
+
+*The 2" driver in a 3D-printed enclosure, fitted into the opening cut in the back of the skull, with the TPA3116D2 amp board.*
 - **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
 - **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable into the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
 
@@ -85,6 +117,15 @@ Everything runs from mains; there's no battery.
 - Connect the servo ground to the ESP32 ground **in one place only**.
 
 ## 8. Software
+
+
+![Bench bring-up with the skull open](images/wiring-bringup.jpg)
+
+*Bench bring-up: the ESP32-S3 wired to the eyes and servos, with the Mac mini running the host software.*
+
+![Skull halves with the ESP32-S3 wired in](images/skull-halves-wired.jpg)
+
+*The ESP32-S3 sitting in the front half of the skull, with its USB-C cable to the Mac.*
 
 Follow the [host README](../host/README.md) and [firmware README](../firmware/skull_esp32/README.md). Useful tests along the way:
 

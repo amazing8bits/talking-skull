@@ -12,7 +12,7 @@ It was built into a plastic Halloween skeleton for trick-or-treaters on Hallowee
 - **Eyes that look alive.** Original procedurally generated eyes with a polar-mapped iris, so the pupils dilate and contract smoothly. The eyes lead the head toward a visitor, glance up and aside while "thinking," hold steady while listening, and blink at natural intervals.
 - **Runs itself.** One double-click (or a Login Item) starts it, it restarts on crashes, and it waits for the next group to leave before greeting again.
 
-<!-- Add a photo or GIF here: docs/images/skull.jpg -->
+<p align="center"><img src="docs/images/skull-assembled.jpg" width="480" alt="The talking skull on the bench, with the reSpeaker XVF3800 mic array on its chest and the eye displays behind acrylic lenses"></p>
 
 ## How it works
 
@@ -43,6 +43,13 @@ The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and au
 | [`tools/eyegen/`](tools/eyegen/) | Generator for the original eye artwork |
 | [`docs/build.md`](docs/build.md) | Step-by-step build guide: drivetrain, jaw, eyes, radar, audio, power, tuning and troubleshooting |
 | [`docs/`](docs/) | Diagrams, images and roadmap |
+
+## Inside the skull
+
+| | | |
+|---|---|---|
+| ![Neck drivetrain](docs/images/neck-drivetrain-installed.jpg) | ![Jaw linkage](docs/images/jaw-linkage.jpg) | ![Speaker and amp](docs/images/speaker-and-amp.jpg) |
+| Neck drivetrain: servo in the spine, rod in the aluminum tube, hub and beam in the skull | Jaw linkage: aluminum-wrapped lever and 2-56 ball link | 2" speaker in a printed enclosure, and the TPA3116D2 amp |
 
 ## Building one
 
