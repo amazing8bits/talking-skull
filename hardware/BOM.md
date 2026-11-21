@@ -59,6 +59,6 @@ The ESP32 gets its power and serial link from the Mac mini's USB port, so the bu
 
 ![Neck drivetrain cross-section](../docs/images/neck_drivetrain.svg)
 
-**How it goes together:** the rod runs up through the aluminum tube, turning in a flanged ball bearing at each end. Where it comes out at the bottom of the skull, the clamping collar grips the rod and carries the weight of the head. Above the collar, the set-screw hub is fixed to the rod, the square beam bolts to the hub through holes 2 and 4, and the two halves of a 3D-printed neck bracket sandwich the beam with M4 screws through holes 1 and 5 into heat-set inserts, securing it to the skull. Two holes drilled in the back of the skull let an Allen key reach those screws.
+**How it goes together:** the rod runs up through the aluminum tube, turning in a flanged ball bearing at each end. Where it comes out at the bottom of the skull, the clamping collar grips the rod and carries the weight of the head. Above the collar, the set-screw hub is fixed to the rod, the square beam bolts to the hub through holes 2 and 4, and the two halves of a 3D-printed neck bracket sandwich the beam with M4 screws through holes 1 and 5 into heat-set inserts, and the bracket press-fits around the plastic bosses inside the skull, held by friction with no glue or screws. Two holes drilled in the back of the skull let an Allen key reach those screws.
 
 <!-- TODO: add links/prices and anything I've missed -->
