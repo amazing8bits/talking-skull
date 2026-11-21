@@ -2,6 +2,8 @@
 
 How the talking skull was put together, in roughly the order it was built. Part numbers are in [`hardware/BOM.md`](../hardware/BOM.md) and pin assignments in [`hardware/wiring.md`](../hardware/wiring.md).
 
+All the printed parts (neck bracket, jaw servo bracket, speaker bracket) were printed in **PLA** on an **Elegoo Neptune 4 Max**.
+
 The prop is built into an off-the-shelf plastic anatomical skeleton. The skull splits into screwed front and back halves, and the head sits on a neck post. Your skeleton will differ, so measure before cutting anything.
 
 **Starting skeleton and mods.** This skeleton came with LED eyes, which were removed to make room for the LCDs. Their openings were already the right place and size for the displays, so the eye sockets needed no cutting. The rest of the changes:
@@ -50,7 +52,7 @@ The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs
 5. At the top: slide the **clamping collar** onto the rod where it comes out of the tube, rest it on the top bearing, and tighten it. The collar carries the head's weight, so the servo and coupler never do.
 6. **Spin test:** turn the rod by hand. If it spins freely, the collar is only touching the bearing's inner race and you're done. If it drags, the collar is rubbing the bearing's outer race or flange, and you need a thin spacer that only touches the inner race (a 3D-printed ring works). On this build it spun freely with no spacer.
 7. Inside the skull, fix the **set-screw hub** to the rod above the skull post, leaving a clear gap above the post. Bolt the **square beam** to the hub.
-8. The beam drops into a **3D-printed bracket** fixed to the skull. A snug channel (0.1–0.2 mm clearance) carries rotation and weight, so a single horizontal screw is enough to hold it.
+8. The beam is held by a **two-piece 3D-printed neck bracket** in the base of the skull. The two halves clamp around the beam and are screwed together with **M4 screws**, so the chain runs servo hub → square beam → bracket → skull, and the skull turns with the rod.
 
 **Before you tighten the hub for good:** power the servo at center (1500 µs, `NECKUS 1500` from the Serial Monitor) and set the beam's orientation so the skull faces straight ahead. Then check the full pan range for anything that touches: the collar's pinch bolt, the hub and the wires.
 
@@ -66,7 +68,7 @@ The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs
 
 The HS-65MG micro servo opens the jaw through a short pushrod.
 
-- **Bracket:** a two-piece cradle-and-cap bracket designed in Fusion 360 and printed in PETG (it tolerates the hot glue and a warm servo better than PLA). The split line is at the servo's mounting ears so the servo can come out for service. The bracket's feet are small and conform to the skull's curve, and they're hot-glued to the inside of the skull.
+- **Bracket:** a two-piece cradle-and-cap bracket designed in Fusion 360 and printed in PLA. The split line is at the servo's mounting ears so the servo can come out for service. The bracket's feet are small and conform to the skull's curve, and they're hot-glued to the inside of the skull.
 ![HS-65MG seated in its 3D-printed bracket](images/jaw-servo-bracket.jpg)
 
 *The HS-65MG seated in its 3D-printed bracket, with the ball stud on the servo horn that the jaw's ball link snaps onto.*
