@@ -13,6 +13,7 @@
 | 1 | TPA3116D2 amplifier board | Audio amp | Next to the Mac, powered by the 12 V adapter below |
 | 1 | MEAN WELL GSM36U12-P1J (12 V, 3 A, 36 W wall adapter) | Amp power | |
 | 1 | 3 A fuse and inline holder | Amp protection | On the 12 V line to the amp |
+| 1 | 3.5 mm (1/8") stereo male plug to bare-wire audio cable, right angle, 6 ft | Audio link | Plug goes into the mic array's 3.5 mm output jack; the bare wires go to the amp's input screw terminals |
 | 1 | Peerless PLS-P830983, 2" 4 Ω full-range | Speaker | Inside the skull |
 | 1 | Triad Magnetics WSU060-4000 (6 V, 4 A, 24 W wall adapter) | Servo power | Regulated; 2.1 × 5.5 mm plug, center positive. Not the WSX060-4000, which has a 2.5 mm center-negative plug. Check the output with a meter before connecting the servos |
 | 2 | 2.1 × 5.5 mm barrel jack to screw terminal adapter | Servo and amp power | One for the servo rail, one for the amp |
