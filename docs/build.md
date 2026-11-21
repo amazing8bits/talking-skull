@@ -10,7 +10,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 - **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
 - **Wrench holes:** two small holes drilled in the back of the skull so an Allen key can reach the neck bracket screws.
-- **Cable holes:** holes drilled in the back of the skull for the neck servo's wires, the ESP32's USB cable, and the power cable to the jaw servo.
+- **Cable holes:** holes drilled in the back of the skull for the neck servo's wires, the radar's wires, the ESP32's USB cable, and the power cable to the jaw servo.
 - **Secured connections:** every DuPont connection to the ESP32, eyes and servos is hot-glued once everything is tested, so vibration and head movement can't work them loose.
 - **Neck lock:** the locking nubs in the neck, which kept the head from turning, ground off with a Dremel so the head rotates freely.
 - **Neck and spine:** the original neck post and blocking screw posts removed, and plastic ground out of the inside of the neck and spine with a Dremel to make room for the drivetrain and servo. The servo is larger than the space in the spine, so a cutout was made in the back of the spine for it.
@@ -137,8 +137,9 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 ## 7. Radar
 
 - The HLK-LD2450 reports up to three people's X/Y positions about 10 times a second, across roughly ±60°.
-- It's hot-glued to the **ribcage**, not the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
-- Radar passes through plastic but not metal. Keep metallic paint, foil and wiring out of the area in front of it.
+- It's hot-glued to the **front of the spine, just below the ribcage**, not the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
+- **Give it a clear view.** Behind the skeleton's thick plastic it gave strange readings, so mount it where nothing sits between it and the visitors. Thin plastic is usually fine, but keep metallic paint, foil and wiring out of the area in front of it.
+- **Wiring:** four wires are soldered to the radar's pads (5 V, GND, TX, RX) and spliced to DuPont connectors at the other end. They run up into the skull through a hole in the back and plug into the ESP32.
 - It needs **5 V power** but uses **3.3 V UART**, so it wires straight to the ESP32. If the Serial Monitor shows `# radar: NO DATA`, swap the RX and TX pins.
 - Tune the trigger zone with `ZONE_MAX_Y` (how far out) and `ZONE_MAX_X` (how wide). If the head turns away from people, flip `NECK_INVERT`.
 
@@ -149,7 +150,7 @@ Everything runs from mains; there's no battery.
 - **Servos:** Triad WSU060-4000, 6 V 4 A. It plugs into a barrel-jack-to-screw-terminal adapter, and the wire from its terminals is spliced into a power lead for each servo, with a 1000 µF capacitor across the supply. Measure its output with a meter before connecting the servos.
 - **Amp:** MEAN WELL GSM36U12-P1J, 12 V 3 A, through a 3 A fuse.
 - **ESP32, radar and eyes:** USB from the Mac mini, which is also the serial link.
-- Connect the servo ground to the ESP32 ground **in one place only**.
+- Connect the servo ground to the ESP32 ground **in one place only**. Here, the servo supply's ground wire is spliced to a DuPont connector that plugs into an ESP32 GND pin.
 
 ## 9. Software
 
