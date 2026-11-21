@@ -3,7 +3,7 @@
 | Qty | Part | Role | Notes |
 |---|---|---|---|
 | 1 | Waveshare ESP32-S3 N16R8 dev kit | Skull controller | 16 MB flash / 8 MB PSRAM; single USB-C port |
-| 1 | HLK-LD2450 24 GHz mmWave radar | Presence and position tracking | UART at 256000 baud; mounted in the fixed base/chest so it stays still when the head turns |
+| 1 | HLK-LD2450 24 GHz mmWave radar | Presence and position tracking | UART at 256000 baud; hot-glued to the ribcage so it stays still when the head turns |
 | 2 | 1.28" GC9A01 round LCD, 240×240 SPI | Eyes | Pins RST, CS, DC, SDA, SCL, GND, VCC (no backlight pin) |
 | 2 | 35 mm acrylic lens | Eyes | One over each display |
 | 1 | Hitec HS-65MG micro servo | Jaw | Ball-joint linkage to the jaw lever; one-piece printed bracket |
