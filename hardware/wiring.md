@@ -22,12 +22,14 @@ The Mac link is **USB serial** (115200 baud) through the dev kit's USB-C port.
 ## Power
 
 ```
-Mains ──▶ Triad WSU060-4000 (6 V 4 A) ──▶ servo rail (jaw + neck) ── 1000 µF cap
+Mains ──▶ Triad WSU060-4000 (6 V 4 A) ──▶ female barrel jack ──┬──▶ jaw servo power  ── 1000 µF cap across +/−
+                                                               └──▶ neck servo power
 Mac mini USB ──▶ ESP32-S3 USB-C (power + serial) ──▶ radar 5 V, eyes 3.3 V
 Mains ──▶ Mac mini ──USB──▶ reSpeaker XVF3800 ──3.5 mm out──▶ TPA3116D2 amp input ──▶ speaker in the skull
 Mains ──▶ MEAN WELL GSM36U12-P1J (12 V 3 A) ──[3 A fuse]──▶ TPA3116D2 amp power
 ```
 
+- **Servo power:** the adapter plugs into a female barrel jack, and its wire is spliced into a separate power lead for each servo.
 - **Servos never run from the ESP32 or USB.** At 6 V the HS-488HB alone can draw 1.2 A when it stalls or starts moving.
 - **Connect the grounds once:** run one wire from the servo rail ground to an ESP32 GND pin so the servo signals have a reference, and connect it nowhere else. Servo current should return to the adapter through its own wire, not through the ESP32 and the USB cable to the Mac.
 - The LD2450 needs **5 V power** but uses **3.3 V UART**, so it connects straight to the ESP32 pins.
