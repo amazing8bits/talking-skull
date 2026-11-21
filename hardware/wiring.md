@@ -15,7 +15,7 @@
 | Left eye CS | 10 | |
 | Right eye CS | 9 | |
 
-The eyes run at 20 MHz SPI over jumper wires. With short wires you can try 40 MHz (`SPI_HZ`). Both panels are mounted upside down, so the sketch rotates them 180°.
+The eyes run at 20 MHz SPI over jumper wires. With short wires you can try 40 MHz (`SPI_HZ`). Both panels are installed upside down so they fit behind the eye sockets; the firmware rotates them 180° (`tft.setRotation(2)`).
 
 The Mac link is **USB serial** (115200 baud) through the dev kit's USB-C port.
 

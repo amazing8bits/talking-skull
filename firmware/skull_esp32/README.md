@@ -29,6 +29,10 @@ cd tools/eyegen
 python3 eyegen.py --color ember --seed 3 --header ../../firmware/skull_esp32/eye_art_data.h
 ```
 
+## Display orientation
+
+The eye displays are installed upside down so they fit in the skull, and `setupEyes()` rotates both panels 180° with `tft.setRotation(2)`. If yours are mounted right side up, use `setRotation(0)`.
+
 ## Serial Monitor commands (115200)
 
 `JAWUS 1500`, `NECKUS 1500`, `NECK -20`, `TRACK` for servo calibration. `EYES 1`, `STATE THINK`, `BLINK`, `GAZE x y` (−100..100) for eye testing.

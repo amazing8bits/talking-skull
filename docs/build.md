@@ -48,7 +48,7 @@ The skull and jaw plastic floats in water and has a firm, glossy surface, which 
 - Two 1.28" round GC9A01 displays sit behind the eye sockets, in the openings left by the skeleton's original LED eyes, each covered by a **35 mm acrylic lens**. The lens magnifies the image slightly and gives it a wet, rounded look.
 - **Lenses:** each lens is stuck to the face of its display with a few **small strips of double-sided tape** around the edge, keeping the tape off the visible part of the screen. The displays are then hot-glued in behind the sockets.
 - Both displays share SPI clock, data, DC and reset; each has its own chip select. The pins are in [`wiring.md`](../hardware/wiring.md).
-- They're mounted upside down, so the sketch rotates them 180°. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
+- **Both displays are installed upside down** because that's the only way they fit behind the sockets. The firmware accounts for it by rotating both panels 180° (`tft.setRotation(2)` in `setupEyes()`), so if you mount yours right side up, change that to `setRotation(0)`. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
 - The eye artwork is generated procedurally by [`tools/eyegen`](../tools/eyegen/), so it's original and free to share. The renderer runs on core 0 of the ESP32 so it never delays the servos or radar.
 - If the eyes look away from visitors, flip `EYE_INVERT_X` in the sketch.
 - **Connect and test right away.** Wire both displays to the ESP32 with DuPont jumper connectors (pins in [`wiring.md`](../hardware/wiring.md)), upload the sketch, and send `EYES 1` and `GAZE 50 -20` from the Serial Monitor. It's much easier to fix a display or wiring problem now than with everything else in the skull.
