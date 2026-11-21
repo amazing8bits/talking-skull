@@ -10,6 +10,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 - **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
 - **Wrench holes:** two small holes drilled in the back of the skull so an Allen key can reach the neck bracket screws.
+- **Cable holes:** holes drilled in the back of the skull for the neck servo's wires, the ESP32's USB cable, and the power cable to the jaw servo.
 - **Neck lock:** the locking nubs in the neck, which kept the head from turning, ground off with a Dremel so the head rotates freely.
 - **Neck and spine:** the original neck post and blocking screw posts removed, and plastic ground out of the inside of the neck and spine with a Dremel to make room for the drivetrain and servo. The servo is larger than the space in the spine, so a cutout was made in the back of the spine for it.
 - **Jaw:** a screw that locked the jaw shut removed. The skeleton was molded with a jaw lever and mounting points for a talking speaker that was never installed; that original lever is kept and wrapped in aluminum to take the ball link.
@@ -41,7 +42,7 @@ The skull and jaw plastic floats in water and has a firm, glossy surface, which 
 - They're mounted upside down, so the sketch rotates them 180°. They run at 20 MHz SPI on jumper wires; short wires may handle 40 MHz.
 - The eye artwork is generated procedurally by [`tools/eyegen`](../tools/eyegen/), so it's original and free to share. The renderer runs on core 0 of the ESP32 so it never delays the servos or radar.
 - If the eyes look away from visitors, flip `EYE_INVERT_X` in the sketch.
-- **Connect and test right away.** Wire both displays to the ESP32 (pins in [`wiring.md`](../hardware/wiring.md)), upload the sketch, and send `EYES 1` and `GAZE 50 -20` from the Serial Monitor. It's much easier to fix a display or wiring problem now than with everything else in the skull.
+- **Connect and test right away.** Wire both displays to the ESP32 with DuPont jumper connectors (pins in [`wiring.md`](../hardware/wiring.md)), upload the sketch, and send `EYES 1` and `GAZE 50 -20` from the Serial Monitor. It's much easier to fix a display or wiring problem now than with everything else in the skull.
 
 ![Both eye displays hot-glued behind the sockets](images/eyes-mounted.jpg)
 
@@ -74,7 +75,7 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 
 *Installed: the ball link on the wrapped jaw lever, next to the hot-glued eye display.*
 
-**Connect** the servo's signal wire to GPIO 4 on the ESP32 (power from the servo supply, not the ESP32; see [Power](#8-power)), then **calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
+**Connect** the servo's signal wire to GPIO 4 on the ESP32 with a DuPont jumper. Its power comes from the servo supply, not the ESP32, through a cable that enters through a hole in the back of the skull (see [Power](#8-power)). Then **calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
 
 ## 4. Speaker
 
@@ -122,7 +123,7 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 
 *Test-fitting the head on the drivetrain before closing up the spine.*
 
-**Wires** run up inside the hollow neck, outside the tube, with a small slack loop so they don't pull as the head turns.
+**Wiring the neck servo:** its leads don't reach the ESP32 in the skull, so they're extended with **two DuPont jumpers joined end to end**, and they enter the skull through a hole drilled in the back. Leave some slack so the wires don't pull as the head turns.
 
 > ⚠️ The HS-488HB has no mechanical stops. Neck travel is limited in firmware by `NECK_MAX_DEG` (40°). Never remove that limit.
 
