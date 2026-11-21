@@ -23,7 +23,7 @@ The Mac link is **USB serial** (115200 baud) through the dev kit's USB-C port.
 
 ```
 Mains ──▶ Triad WSU060-4000 (6 V 4 A) ──▶ barrel jack (screw terminal) ──┬──▶ jaw servo power  ── 1000 µF cap across +/−
-                                                               └──▶ neck servo power
+                                                                         └──▶ neck servo power
 Mac mini USB ──▶ ESP32-S3 USB-C (power + serial) ──▶ radar 5 V, eyes 3.3 V
 Mains ──▶ Mac mini ──USB──▶ reSpeaker XVF3800 ──3.5 mm out──▶ TPA3116D2 amp input ──▶ speaker in the skull
 Mains ──▶ MEAN WELL GSM36U12-P1J (12 V 3 A) ──[3 A fuse]──▶ TPA3116D2 amp power
