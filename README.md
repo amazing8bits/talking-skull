@@ -12,7 +12,7 @@ It was built into a plastic Halloween skeleton for trick-or-treaters on Hallowee
 - **Eyes that look alive.** Original procedurally generated eyes with a polar-mapped iris, so the pupils dilate and contract smoothly. The eyes lead the head toward a visitor, glance up and aside while "thinking," hold steady while listening, and blink at natural intervals.
 - **Runs itself.** One double-click (or a Login Item) starts it, it restarts on crashes, and it waits for the next group to leave before greeting again.
 
-<p align="center"><img src="docs/images/skull-assembled.jpg" width="480" alt="The talking skull on the bench, with the reSpeaker XVF3800 mic array on its chest and the eye displays behind acrylic lenses"></p>
+<p align="center"><img src="docs/images/skull-demo.gif" width="420" alt="The talking skull at night: glowing eyes, the head turning and the jaw moving as it talks"></p>
 
 ## How it works
 

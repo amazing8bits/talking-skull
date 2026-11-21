@@ -4,6 +4,10 @@ How the talking skull was put together, in roughly the order it was built. Part 
 
 The prop is built into an off-the-shelf plastic anatomical skeleton. The skull splits into screwed front and back halves, and the head sits on a neck post. Your skeleton will differ, so measure before cutting anything.
 
+![The finished skull on the bench](images/skull-assembled.jpg)
+
+*The finished build on the bench: eye displays behind acrylic lenses, and the reSpeaker XVF3800 mic array resting on the chest.*
+
 ![The two skull halves opened up and cleared out](images/skull-halves-prepped.jpg)
 
 *The skull halves opened up. The back half (top) has a square opening cut for the speaker; the front half keeps the original jaw pivot.*
