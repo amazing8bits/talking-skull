@@ -18,7 +18,9 @@
 | 1 | Triad Magnetics WSU060-4000 (6 V, 4 A, 24 W wall adapter) | Servo power | Regulated; 2.1 × 5.5 mm plug, center positive. Not the WSX060-4000, which has a 2.5 mm center-negative plug. Check the output with a meter before connecting the servos |
 | 2 | 2.1 × 5.5 mm barrel jack to screw terminal adapter | Servo and amp power | One for the servo rail, one for the amp |
 | 1 | ~1000 µF electrolytic capacitor, 10 V or higher | Servo rail | Across the servo rail near the servos, to absorb current spikes |
-| — | 20 AWG power wire, 24–26 AWG signal wire | | |
+| — | 2-conductor 20 AWG wire | Power | From the servo supply's barrel jack to the servos, and from the 12 V barrel jack to the amp's power terminals |
+| — | 2-conductor 22 AWG wire | Speaker | From the amp's output to the speaker |
+| — | DuPont jumper wires | Signals | Eyes and servo signals to the ESP32 |
 
 The ESP32 gets its power and serial link from the Mac mini's USB port, so the build no longer needs a battery or buck converters. Each part runs from its own mains adapter.
 
