@@ -6,6 +6,14 @@ All the printed parts (neck bracket, jaw servo bracket, speaker bracket) were pr
 
 The prop is built into an off-the-shelf plastic anatomical skeleton. The skull splits into screwed front and back halves, and the head sits on a neck post. Your skeleton will differ, so measure before cutting anything.
 
+**Choosing a skeleton.** This one is a generic plastic skeleton from a big-box store. The brand matters less than three things to check before buying:
+
+- **The neck turns left and right on a joint.** That's what lets a servo pan the head. Skeletons whose skull sits on a **ball joint** won't work with this drivetrain.
+- **The jaw opens on a hinge** rather than being fixed or loose.
+- **There's a plastic lever inside the jaw** (or somewhere solid to attach a pushrod) for the jaw servo's linkage.
+
+A skull that splits into halves, and existing eye openings (for example from LED eyes), make the build much easier.
+
 **Starting skeleton and mods.** This skeleton came with LED eyes, which were removed to make room for the LCDs. Their openings were already the right place and size for the displays, so the eye sockets needed no cutting. The rest of the changes:
 
 - **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
