@@ -119,7 +119,8 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 ## 6. Audio
 
 - **Mic:** the Seeed reSpeaker XVF3800 bare board is hot-glued to the front of the ribcage and connects to the Mac over USB. It ships with I2S firmware, so flash the **USB firmware** first, or it won't show up on the Mac. The mic openings are on the back (logo) side, so that side has to face the visitors.
-- **Not hearing itself:** the XVF3800's echo cancellation needs the speaker audio as a reference, which it doesn't get with a separate amp. Instead, `skull.py` only listens while the skull isn't talking.
+- **Not hearing itself:** the Mac plays the skull's voice *through the mic array* over USB (`--out-device ReSpeaker`), and the array's **3.5 mm output jack feeds the amp's input**. Because the array plays the voice itself, its echo cancellation has the exact reference signal and filters the skull's own voice out of what the mics pick up. As a second safeguard, `skull.py` also only listens while the skull isn't talking.
+- **Never** connect the amp's speaker outputs to the array. They're a bridged power output, not line level, and could damage it.
 - **Speaker:** a Peerless PLS-P830983 2" full-range driver inside the skull, driven by a TPA3116D2 amp next to the Mac. The amp's speaker outputs are bridged, so never connect either speaker wire to ground.
 
 ![Speaker in its bracket and the TPA3116D2 amp](images/speaker-and-amp.jpg)
@@ -127,7 +128,7 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 *The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
 - **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M2 screws** into **M2 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
 - **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
-- **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable into the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
+- **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable from the mic array to the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
 
 ## 7. Power
 

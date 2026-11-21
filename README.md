@@ -23,7 +23,7 @@ It was built into a plastic Halloween skeleton for trick-or-treaters on Hallowee
                           │                            │
         jaw servo ◀───────┤                            ├── USB mic array ──▶ Whisper (MLX, on-device STT)
         neck servo ◀──────┤                            ├── Claude API (Haiku) — skull persona
-        2× GC9A01 eyes ◀──┘                            └── macOS `say` TTS ──▶ amp ──▶ 2" speaker
+        2× GC9A01 eyes ◀──┘                            └── macOS `say` TTS ──USB──▶ mic array 3.5 mm out ──▶ amp ──▶ 2" speaker
 ```
 
 1. The **LD2450 mmWave radar** spots a visitor and reports their position.
