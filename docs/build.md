@@ -56,6 +56,10 @@ The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs
 The HS-65MG micro servo opens the jaw through a short pushrod.
 
 - **Bracket:** a two-piece cradle-and-cap bracket designed in Fusion 360 and printed in PETG (it tolerates the hot glue and a warm servo better than PLA). The split line is at the servo's mounting ears so the servo can come out for service. The bracket's feet are small and conform to the skull's curve, and they're hot-glued to the inside of the skull.
+![HS-65MG seated in its 3D-printed bracket](images/jaw-servo-bracket.jpg)
+
+*The HS-65MG seated in its 3D-printed bracket, with the ball stud on the servo horn that the jaw's ball link snaps onto.*
+
 - **Servo screws:** the HS-65MG's ear holes take **M2** screws. 2-56 is slightly too big.
 - **Jaw lever:** the skeleton's plastic jaw lever is wrapped in thin aluminum to give the linkage a solid mounting point. The wrap is hot-glued and clamped with small screws.
 - **Linkage:** two Du-Bro 2-56 threaded ball links on a short 2-56 rod (cut from a 2-56 × 1" screw). Ball links have no free play, so the jaw starts moving on each syllable instead of rattling first, and the rod threads in and out to adjust the closed position.
