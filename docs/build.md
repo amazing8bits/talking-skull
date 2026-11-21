@@ -10,7 +10,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 - **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
 - **Neck lock:** the locking nubs in the neck, which kept the head from turning, ground off with a Dremel so the head rotates freely.
-- **Neck and spine:** the original neck post and blocking screw posts removed; the upper spine opened to fit the neck servo, coupler and aluminum tube.
+- **Neck and spine:** the original neck post and blocking screw posts removed, and plastic ground out of the inside of the neck and spine with a Dremel to make room for the drivetrain and servo. The servo is larger than the space in the spine, so a cutout was made in the back of the spine for it.
 - **Jaw:** a screw that locked the jaw shut removed. The skeleton was molded with a jaw lever and mounting points for a talking speaker that was never installed; that original lever is kept and wrapped in aluminum to take the ball link.
 
 ![The finished skull on the bench](images/skull-assembled.jpg)
@@ -32,7 +32,7 @@ The skull and jaw plastic floats in water and has a firm, glossy surface, which 
 
 ## 2. Neck pan drivetrain
 
-The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs up the neck inside a fixed aluminum tube.
+The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that runs up the neck inside a fixed aluminum tube.
 
 ![Neck drivetrain cross-section](images/neck_drivetrain.svg)
 
@@ -43,6 +43,8 @@ The HS-488HB sits in the ribcage and turns the head through a 1/4" rod that runs
 **Prepare the skeleton**
 1. Remove the skeleton's original neck post and any screw posts that block the tube. The upper neck halves on this skeleton are screwed together, not glued, so they come apart.
 2. Drill the skull post's square display-stand hole out to **3/8" round**. It's a clearance hole only: the rod passes through it without touching.
+3. Grind out the inside of the neck and upper spine with a Dremel until the tube, coupler and servo fit. The HS-488HB is larger than the space in the spine, so cut an opening in the back of the spine for it.
+4. **Mount the servo:** it sits sandwiched between the spine and the back of the skeleton. Pack it in with plenty of hot glue so it's held tightly and can't shift or twist. Any movement of the servo body is lost head motion and puts side load on the coupler.
 
 **Build the drivetrain**
 1. Cut the 5/8" OD aluminum tube to length and deburr both ends inside and out.
