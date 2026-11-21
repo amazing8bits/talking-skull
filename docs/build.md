@@ -22,7 +22,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 
 *The skull halves opened up. In the back half (top), the battery holder has been cut out to make room for the speaker; the front half keeps the original jaw lever and pivot.*
 
-**Build order:** eyes first (wired to the ESP32 and tested), then the jaw servo and bracket, then the neck drivetrain, then the mic array, and the radar last. The sections below follow that order.
+**Build order:** eyes first (wired to the ESP32 and tested), then the jaw servo and bracket, then the speaker, then the neck drivetrain, then the mic array, and the radar last. The sections below follow that order.
 
 ## 1. Know your plastic
 
@@ -74,9 +74,21 @@ The HS-65MG micro servo opens the jaw through a short pushrod.
 
 *Installed: the ball link on the wrapped jaw lever, next to the hot-glued eye display.*
 
-**Connect** the servo's signal wire to GPIO 4 on the ESP32 (power from the servo supply, not the ESP32; see [Power](#7-power)), then **calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
+**Connect** the servo's signal wire to GPIO 4 on the ESP32 (power from the servo supply, not the ESP32; see [Power](#8-power)), then **calibrate** with the Serial Monitor (115200 baud): send `JAWUS 1400`, `JAWUS 2000` and values in between to find where the jaw is just closed and fully open, then set `JAW_CLOSED_US` and `JAW_OPEN_US` in the sketch. Set "closed" just before the jaw touches, so the servo never pushes against it. A stalled servo buzzes, which you'll hear on a prop whose job is talking.
 
-## 4. Neck pan drivetrain
+## 4. Speaker
+
+- **Speaker:** a Peerless PLS-P830983 2" full-range driver inside the skull, driven by a TPA3116D2 amp next to the Mac. The amp's speaker outputs are bridged, so never connect either speaker wire to ground.
+- **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M4 screws** into **M4 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
+
+![Speaker in its bracket and the TPA3116D2 amp](images/speaker-and-amp.jpg)
+
+*The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
+
+- **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
+- **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable from the mic array to the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
+
+## 5. Neck pan drivetrain
 
 The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that runs up the neck inside a fixed aluminum tube.
 
@@ -114,21 +126,13 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 
 > ⚠️ The HS-488HB has no mechanical stops. Neck travel is limited in firmware by `NECK_MAX_DEG` (40°). Never remove that limit.
 
-## 5. Audio: mic array and speaker
+## 6. Mic array
 
 - **Mic:** the Seeed reSpeaker XVF3800 bare board is hot-glued to the front of the ribcage and connects to the Mac over USB. It ships with I2S firmware, so flash the **USB firmware** first, or it won't show up on the Mac. The mic openings are on the back (logo) side, so that side has to face the visitors.
 - **Not hearing itself:** the Mac plays the skull's voice *through the mic array* over USB (`--out-device ReSpeaker`), and the array's **3.5 mm output jack feeds the amp's input**. Because the array plays the voice itself, its echo cancellation has the exact reference signal and filters the skull's own voice out of what the mics pick up. As a second safeguard, `skull.py` also only listens while the skull isn't talking.
 - **Never** connect the amp's speaker outputs to the array. They're a bridged power output, not line level, and could damage it.
-- **Speaker:** a Peerless PLS-P830983 2" full-range driver inside the skull, driven by a TPA3116D2 amp next to the Mac. The amp's speaker outputs are bridged, so never connect either speaker wire to ground.
 
-![Speaker in its bracket and the TPA3116D2 amp](images/speaker-and-amp.jpg)
-
-*The 2" driver in its 3D-printed bracket, fitted where the battery holder was cut out of the back of the skull, with the TPA3116D2 amp board.*
-- **Speaker mounting:** the driver is screwed into a 3D-printed bracket with **M4 screws** into **M4 heat-set inserts**, pressed into the print with a soldering iron. A layer of **car-speaker sealing tape** (foam gasket) between the speaker and the bracket decouples it from the skull, so the plastic doesn't buzz or rattle along with it.
-- **Gain:** set the Mac's output volume high and the amp's gain low. The voice stays loud and any background noise stays quiet.
-- **Buzz:** if the speaker buzzes, unplug things one at a time to find the source (the audio cable, then the ESP32's USB). A **ground-loop isolator** on the 3.5 mm cable from the mic array to the amp fixes most cases. Also keep servo current out of the USB ground (see [power](../hardware/wiring.md#power)) and keep audio wires away from servo wires.
-
-## 6. Radar
+## 7. Radar
 
 - The HLK-LD2450 reports up to three people's X/Y positions about 10 times a second, across roughly ±60°.
 - It's hot-glued to the **ribcage**, not the turning head, so its coordinates don't move when the neck turns. Keep it level, facing forward and centered below the neck's pivot.
@@ -136,7 +140,7 @@ The HS-488HB sits in the upper spine and turns the head through a 1/4" rod that 
 - It needs **5 V power** but uses **3.3 V UART**, so it wires straight to the ESP32. If the Serial Monitor shows `# radar: NO DATA`, swap the RX and TX pins.
 - Tune the trigger zone with `ZONE_MAX_Y` (how far out) and `ZONE_MAX_X` (how wide). If the head turns away from people, flip `NECK_INVERT`.
 
-## 7. Power
+## 8. Power
 
 Everything runs from mains; there's no battery.
 
@@ -145,8 +149,7 @@ Everything runs from mains; there's no battery.
 - **ESP32, radar and eyes:** USB from the Mac mini, which is also the serial link.
 - Connect the servo ground to the ESP32 ground **in one place only**.
 
-## 8. Software
-
+## 9. Software
 
 ![Bench bring-up with the skull open](images/wiring-bringup.jpg)
 
@@ -189,5 +192,5 @@ All in the settings block at the top of `skull.py`:
 | Head turns away from people | Flip `NECK_INVERT` |
 | Jaw buzzes when closed | `JAW_CLOSED_US` drives it into its stop; back it off |
 | ESP32 resets when servos move | Servos are drawing from USB; give them their own supply |
-| Speaker buzz or hum | See [Audio](#5-audio-mic-array-and-speaker) |
+| Speaker buzz or hum | See [Speaker](#4-speaker) |
 | Whisper hears words in silence | Common phantom phrases are already filtered in `HALLUCINATIONS`; add any new ones there |
