@@ -11,6 +11,7 @@ The prop is built into an off-the-shelf plastic anatomical skeleton. The skull s
 - **Skull:** opened along its front/back seam; the battery holder in the back half cut out to make room for a larger speaker; the skull post's hole drilled out to 3/8" for the neck rod.
 - **Wrench holes:** two small holes drilled in the back of the skull so an Allen key can reach the neck bracket screws.
 - **Cable holes:** holes drilled in the back of the skull for the neck servo's wires, the ESP32's USB cable, and the power cable to the jaw servo.
+- **Secured connections:** every DuPont connection to the ESP32, eyes and servos is hot-glued once everything is tested, so vibration and head movement can't work them loose.
 - **Neck lock:** the locking nubs in the neck, which kept the head from turning, ground off with a Dremel so the head rotates freely.
 - **Neck and spine:** the original neck post and blocking screw posts removed, and plastic ground out of the inside of the neck and spine with a Dremel to make room for the drivetrain and servo. The servo is larger than the space in the spine, so a cutout was made in the back of the spine for it.
 - **Jaw:** a screw that locked the jaw shut removed. The skeleton was molded with a jaw lever and mounting points for a talking speaker that was never installed; that original lever is kept and wrapped in aluminum to take the ball link.
