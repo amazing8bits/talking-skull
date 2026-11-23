@@ -57,24 +57,6 @@ The ESP32 handles real-time work: servos, eyes, radar. The Mac handles AI and au
 
 The full build, including mechanical steps, calibration, tuning and troubleshooting, is in **[docs/build.md](docs/build.md)**.
 
-## Quick start
-
-**Mac mini**
-```bash
-cd host
-bash setup.sh                 # one-time install
-cp .env.example .env          # add your ANTHROPIC_API_KEY
-source .venv/bin/activate && export ANTHROPIC_API_KEY=sk-ant-...
-python skull.py --text        # test without the mic or ESP32
-```
-Then double-click `start_skull.command`, or add it to Login Items. See [`host/README.md`](host/README.md).
-
-**ESP32-S3**
-1. Open `firmware/skull_esp32/skull_esp32.ino` in the Arduino IDE (board *ESP32S3 Dev Module*, PSRAM *OPI PSRAM*, USB CDC On Boot *Disabled*).
-2. Install **ESP32Servo** and **LovyanGFX**, then upload. See the [firmware README](firmware/skull_esp32/README.md).
-
-> ⚠️ The HS-488HB neck servo has no mechanical stops. The firmware limits it to ±40° (`NECK_MAX_DEG`), so don't remove that limit.
-
 ## Hardware at a glance
 
 - Waveshare ESP32-S3 N16R8 dev kit (16 MB flash / 8 MB PSRAM)
