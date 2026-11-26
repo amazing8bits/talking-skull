@@ -22,8 +22,10 @@ constexpr int IRIS_R = 62;          // iris radius on screen, pixels
 constexpr int GAZE_PX = 52;         // how far the iris travels at full gaze
 constexpr int LUT_R = IRIS_R + 2;
 constexpr int LUT_N = 2 * LUT_R + 1;
-constexpr uint16_t PUPIL = 0x0100;  // near-black, byte-swapped RGB565
 constexpr uint16_t LID = 0x0000;    // eyelid / socket color
+// The pupil color comes from pupil_ramp in eye_art_data.h (center -> edge): near-black for
+// normal eyes, or a hot glow for --pupil glow. Indexing by the fraction of the pupil radius
+// keeps the glow the same shape as the pupil dilates.
 
 // Polar lookup for one quadrant-free disk: distance (half pixels) and angle (0..255).
 // Built once on first use, into PSRAM if available.
@@ -118,7 +120,7 @@ inline void render(uint16_t *buf, float gx, float gy, float pupil, float lid, fl
           const int i = ly * LUT_N + lx;
           const int d = lutD[i];
           if (d < P2) {
-            p = PUPIL;
+            p = pupil_ramp[d * PUPIL_N / P2];
           } else if (d < R2) {
             int r = (d - P2) * (IRIS_RAD - 1) / span;
             p = iris[r * IRIS_A + lutA[i]];
