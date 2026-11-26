@@ -179,6 +179,7 @@ Follow the [host README](../host/README.md) and [firmware README](../firmware/sk
 | List audio devices | `python skull.py --list-devices` |
 | Eyes on, thinking look | `EYES 1`, then `STATE THINK` in the Serial Monitor |
 | Point the eyes | `GAZE 50 -20` |
+| Switch eye artwork | `LOOK HAZEL`, then `LOOK GLOW` |
 | Neck by hand / back to tracking | `NECK -20`, then `TRACK` |
 
 The ESP32 prints a status line every 2 seconds (radar frames, whether someone is in the zone, eye frame rate) and repeats its `PRESENCE` state, so the Mac recovers if it starts late.
@@ -189,6 +190,7 @@ All in the settings block at the top of `skull.py`:
 
 - **Voice:** `SAY_VOICE`, `SAY_RATE`, and `PITCH_DROP` (below 1.0 makes it deeper). `skull_british.py` uses a natural-pitch British voice instead.
 - **Personality:** `SYSTEM_PROMPT`, `GREETINGS` and `GOODBYES`. The skull is a theatrical, boastful villain who is secretly delighted by visitors, keeps it family friendly, compliments costumes and never asks for personal details.
+- **Presenter mode:** say "switch to presenter mode" and the skull becomes Bob, a teacher who explains how it was built, with a British voice and hazel eyes. His facts are in `PRESENTER_PROMPT`; "switch to skull mode" goes back. See the [host README](../host/README.md#modes).
 - **Listening:** `END_SILENCE` (pause that ends a question) and `SPEECH_OVER_NOISE` (raise it on a noisy street).
 - **Jaw sync:** `JAW_LEAD_MS` (raise it if the jaw lags the voice), `JAW_SYLLABLE_DB` (lower it to catch more syllables) and `JAW_MIN_OPEN` (raise it if quiet syllables barely move the jaw).
 

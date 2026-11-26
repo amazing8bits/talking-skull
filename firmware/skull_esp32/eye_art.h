@@ -1,21 +1,39 @@
 // eye_art.h: original eye renderer for the talking skull's GC9A01 displays.
 //
 // Draws one 240x240 eye frame into a 16-bit LovyanGFX sprite buffer:
-//   eyeart::render(buf, gx, gy, pupil, lid, squint)
+//   eyeart::render(buf, set, gx, gy, pupil, lid, squint)
+//     set     which artwork to draw (an EyeSet from eye_sets.h)
 //     gx, gy  gaze, -1..1 (right / down positive)
 //     pupil   pupil radius in pixels
 //     lid     blink, 0 = open .. 1 = closed
 //     squint  extra upper-lid droop, 0..1
 //
-// The artwork (sclera, polar iris map, glints) is in eye_art_data.h, generated
-// procedurally by tools/eyegen/eyegen.py. To change the eye color, re-run the generator.
+// The artwork (sclera, polar iris map, pupil colors, glints) lives in eye_set_*.h files, generated
+// procedurally by tools/eyegen/eyegen.py and listed in eye_sets.h.
 #pragma once
 #include <stdint.h>
 #include <math.h>
 #include <stdlib.h>
-#include "eye_art_data.h"
+#ifndef PROGMEM
+#define PROGMEM
+#endif
 
 namespace eyeart {
+
+// Artwork geometry, fixed by tools/eyegen (each generated set static_asserts that it matches)
+constexpr int SCLERA_W = 240, SCLERA_H = 240;
+constexpr int IRIS_A = 256, IRIS_RAD = 64;        // polar iris map: angles x radial rows
+constexpr int GLINT_X0 = -48, GLINT_Y0 = -44, GLINT_W = 76, GLINT_H = 76;
+constexpr int PUPIL_N = 32;                       // pupil color ramp entries, center -> edge
+
+// One complete look: all RGB565 arrays are byte-swapped, as LovyanGFX 16-bit sprites store pixels
+struct EyeSet {
+  const char *name;            // what "LOOK <name>" matches
+  const uint16_t *sclera;      // SCLERA_H x SCLERA_W
+  const uint16_t *iris;        // IRIS_RAD rows (row 0 = pupil edge) x IRIS_A angles
+  const uint16_t *pupil_ramp;  // PUPIL_N colors
+  const uint8_t *glint;        // GLINT_H x GLINT_W alpha, relative to the iris center
+};
 
 constexpr int W = 240, H = 240;
 constexpr int IRIS_R = 62;          // iris radius on screen, pixels
@@ -23,7 +41,7 @@ constexpr int GAZE_PX = 52;         // how far the iris travels at full gaze
 constexpr int LUT_R = IRIS_R + 2;
 constexpr int LUT_N = 2 * LUT_R + 1;
 constexpr uint16_t LID = 0x0000;    // eyelid / socket color
-// The pupil color comes from pupil_ramp in eye_art_data.h (center -> edge): near-black for
+// The pupil color comes from the set's pupil_ramp (center -> edge): near-black for
 // normal eyes, or a hot glow for --pupil glow. Indexing by the fraction of the pupil radius
 // keeps the glow the same shape as the pupil dilates.
 
@@ -69,9 +87,11 @@ static inline uint16_t toWhite(uint16_t p, int a) {
   return (uint16_t)((c >> 8) | (c << 8));
 }
 
-inline void render(uint16_t *buf, float gx, float gy, float pupil, float lid, float squint) {
+inline void render(uint16_t *buf, const EyeSet &set, float gx, float gy, float pupil, float lid, float squint) {
   if (!lutD) buildLut();
   if (!lutD || !lutA) return;
+  const uint16_t *sclera = set.sclera, *iris = set.iris, *pupil_ramp = set.pupil_ramp;
+  const uint8_t *glint = set.glint;
 
   gx = gx < -1 ? -1 : gx > 1 ? 1 : gx;
   gy = gy < -1 ? -1 : gy > 1 ? 1 : gy;

@@ -5,7 +5,7 @@ The conversation loop runs on an Apple Silicon Mac (an M4 Mac mini here).
 | File | Purpose |
 |---|---|
 | `skull.py` | Main loop: radar presence → greeting → mic + VAD → Whisper (MLX, on-device) → Claude (streamed) → macOS `say` → speaker, with jaw sync sent to the ESP32 |
-| `skull_british.py` | The same loop with a natural-pitch British voice; it imports `skull.py`, so fixes apply to both |
+| `skull_british.py` | The same loop with a natural-pitch British voice in skull mode; it imports `skull.py`, so fixes apply to both |
 | `setup.sh` | One-time setup: Homebrew Python, PortAudio, a `.venv`, and the Whisper model download |
 | `start_skull.command` | Double-click or Login Item launcher; reads `.env` and restarts the skull if it crashes |
 | `requirements.txt` | Python dependencies (also installed by `setup.sh`) |
@@ -25,6 +25,19 @@ python skull.py --link serial --port /dev/cu.usbmodem1101 --in-device ReSpeaker 
 
 To start at login, add `start_skull.command` under System Settings → General → Login Items. It reads the key and options from `.env`.
 
+## Modes
+
+Say it to the skull at any point in a conversation:
+
+| Say | Mode | Persona | Voice | Eyes |
+|---|---|---|---|---|
+| "Switch to presenter mode" | `presenter` | Bob, a friendly teacher who explains what the skull is and how it was built | British (`PRESENTER_VOICES`) | Hazel, white sclera |
+| "Switch to skull mode" | `skull` | The Halloween villain | Deep (`SAY_VOICE`) | Glowing red pupils, black sclera |
+
+"Presentation mode", "Halloween mode" and "go back to skull mode" work too. The command is handled on the Mac and never goes to Claude. The mode stays until it's switched again; to start in presenter mode (at a Maker Faire, say), add `--mode presenter` to `SKULL_ARGS` in `.env`.
+
+Bob's facts come from `PRESENTER_PROMPT` in `skull.py`, a short overview of the hardware, software and how a conversation flows. It's sent with every question, so keep it short: the current one adds about 35 ms before the first word.
+
 ## Talking to the ESP32
 
 The ESP32 firmware talks to the Mac over **USB serial** at 115200 baud with one plain-text message per line:
@@ -34,12 +47,13 @@ The ESP32 firmware talks to the Mac over **USB serial** at 115200 baud with one 
 | ESP32 → Mac | `PRESENCE 1` / `PRESENCE 0` | Someone in range / nobody. Repeated every 2 s |
 | Mac → ESP32 | `EYES 1` / `EYES 0` | Eyes on / off |
 | Mac → ESP32 | `STATE IDLE\|LISTEN\|THINK\|SPEAK` | Changes how the eyes behave |
+| Mac → ESP32 | `LOOK glow` / `LOOK hazel` | Switches the eye artwork (sent when the mode changes) |
 | Mac → ESP32 | `JAW n` | 0 = closed … 255 = wide open, about 50 times a second |
 
 `skull.py` also has a `--link udp` mode, but the current firmware only uses USB serial.
 
 ## Tuning
 
-The settings at the top of `skull.py` cover the voice (`SAY_VOICE`, `SAY_RATE`, `PITCH_DROP`), listening (`END_SILENCE`, `SPEECH_OVER_NOISE`), and jaw sync (`JAW_LEAD_MS`, `JAW_SYLLABLE_DB`, `JAW_MIN_OPEN`). The skull's personality is in `SYSTEM_PROMPT`.
+The settings at the top of `skull.py` cover the voice (`SAY_VOICE`, `SAY_RATE`, `PITCH_DROP`), listening (`END_SILENCE`, `SPEECH_OVER_NOISE`), and jaw sync (`JAW_LEAD_MS`, `JAW_SYLLABLE_DB`, `JAW_MIN_OPEN`). The skull's personality is in `SYSTEM_PROMPT`, and Bob's in `PRESENTER_PROMPT` with his voice in `PRESENTER_VOICES`, `PRESENTER_RATE` and `PRESENTER_PITCH`.
 
 Better voices: System Settings → Accessibility → Spoken Content → System Voice → Manage Voices.

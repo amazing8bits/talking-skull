@@ -16,10 +16,10 @@ The iris is saved in polar form (`iris_polar.png`), so the firmware can dilate t
 
 ## Updating the firmware eyes
 
-The firmware ships with glowing red pupils on a black sclera, made with `--color smolder --sclera black --pupil glow --seed 7` (the defaults, plus seed 7). For natural eyes instead, for example green:
+`--header` writes one eye set, `eye_set_<name>.h`, that the Mac can select with `LOOK <name>` (the name comes from the file name, or `--name`). The firmware ships with two, listed in `firmware/skull_esp32/eye_sets.h`: `glow` (skull mode, made with the defaults plus `--seed 7`) and `hazel` (presenter mode). For example, to make the presenter's eyes green:
 
 ```bash
-python3 eyegen.py --color green --sclera white --pupil dark --seed 7 --header ../../firmware/skull_esp32/eye_art_data.h
+python3 eyegen.py --color green --sclera white --pupil dark --seed 7 --header ../../firmware/skull_esp32/eye_set_hazel.h
 ```
 Then re-upload the sketch. `firmware/skull_esp32/eye_art.h` turns these textures into frames on the ESP32, with live pupil size, gaze, blinking, curved lids and glints.
 

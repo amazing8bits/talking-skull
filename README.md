@@ -12,6 +12,7 @@ It was built into a plastic Halloween skeleton for trick-or-treaters on Hallowee
 - **Family-friendly by design.** The persona is spooky-fun but never frightening or mean, compliments costumes extravagantly, and never asks for names, addresses or other personal details.
 - **Jaw that actually talks.** The jaw opens once per syllable, wider for louder ones, and moves slightly ahead of the audio to make up for servo travel time.
 - **Eyes that look alive.** Original procedurally generated eyes with a polar-mapped iris, so the pupils dilate and contract smoothly. The eyes lead the head toward a visitor, glance up and aside while "thinking," hold steady while listening, and blink at natural intervals.
+- **Presenter mode.** Say "switch to presenter mode" and the skull becomes Bob, a friendly teacher with a British voice and natural hazel eyes, who explains how he was built and answers questions about the project.
 - **Runs itself.** One double-click (or a Login Item) starts it, it restarts on crashes, and it waits for the next group to leave before greeting again.
 
 <p align="center"><img src="docs/images/skull-demo.gif" width="420" alt="The talking skull at night: glowing eyes, the head turning and the jaw moving as it talks"></p>
