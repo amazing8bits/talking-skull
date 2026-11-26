@@ -51,7 +51,11 @@ CLAUDE_MODEL = "claude-haiku-5-5"        # fastest; try "claude-sonnet-5-5" for 
 WHISPER_MODEL = "mlx-community/whisper-large-v3-turbo"   # "mlx-community/whisper-tiny" if you want it even faster
 SAY_VOICE = "Ralph"                      # run `say -v '?'` to list voices. Ralph/Fred/Daniel all work
 SAY_RATE = 165                           # words per minute
-PITCH_DROP = 0.85                        # 1.0 = normal; <1 makes the voice deeper (and a little slower)
+PITCH_DROP = 0.92                        # 1.0 = normal; <1 makes the voice deeper (and a little slower).
+                                         # Deeper than ~0.9 gets muddy and hard to understand on the small speaker
+CLARITY = True                           # clean up the skull voice for the 2" speaker (see clarify())
+CLARITY_HIGHPASS_HZ = 180                # cut bass below this: the speaker can't play it, it only eats amp power
+CLARITY_PRESENCE_DB = 6.0                # boost around 3 kHz, where consonants (t, s, k) carry the words
 MAX_TURNS = 20                           # safety cap; normally a chat ends when they stop talking or walk away
 REWAKE_SECS = 12                         # if the same person is still standing there after goodbye, wake again after this
 LISTEN_TIMEOUT = 8.0                     # seconds to wait for someone to start talking
@@ -181,13 +185,14 @@ class Mode:
     rate: int
     pitch: float              # 1.0 = natural; <1 deeper
     look: str                 # eye set on the ESP32 (firmware/skull_esp32/eye_sets.h)
+    clarity: bool = False     # run the voice through clarify() before playing it
 
 
 SKULL = Mode("skull", SYSTEM_PROMPT, GREETINGS, GOODBYES,
              switch_line="Bwahaha! The master of this house has returned!",
              didnt_hear="Speak up, mortal! I cannot hear you over the screams.",
              error_line="My powers falter! Ask me again, mortal.",
-             voice=SAY_VOICE, rate=SAY_RATE, pitch=PITCH_DROP, look="glow")
+             voice=SAY_VOICE, rate=SAY_RATE, pitch=PITCH_DROP, look="glow", clarity=CLARITY)
 PRESENTER = Mode("presenter", PRESENTER_PROMPT, PRESENTER_GREETINGS, PRESENTER_GOODBYES,
                  switch_line="Presenter mode! Hello, I'm Bob. I'm a talking skull, "
                              "and I'd love to tell you how I was built. What would you like to know?",
@@ -402,7 +407,7 @@ class Mouth:
         self._n = 0
 
     def synth(self, text):
-        """Render text to (samples float32, sample_rate)."""
+        """Render text to (samples to play, sample_rate, samples for the jaw), all float32."""
         self._n += 1
         path = os.path.join(self.tmpdir, f"s{self._n}.wav")
         m = self.mode
@@ -413,10 +418,13 @@ class Mouth:
             raw = w.readframes(w.getnframes())
         os.remove(path)
         audio = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
-        return deepen(audio, m.pitch), sr
+        speech = deepen(audio, m.pitch)
+        # play the cleaned-up audio, but drive the jaw from the original: compression flattens the
+        # loudness dips between syllables that the jaw sync looks for
+        return (clarify(speech, sr) if m.clarity else speech), sr, speech
 
-    def play(self, audio, sr):
-        env = jaw_envelope(audio, sr, JAW_FPS)
+    def play(self, audio, sr, jaw_audio=None):
+        env = jaw_envelope(audio if jaw_audio is None else jaw_audio, sr, JAW_FPS)
         audio, sr = self._fit_device(audio, sr)
         stop = threading.Event()
         t0 = [None]
@@ -474,6 +482,31 @@ def deepen(audio, factor):
     x_old = np.arange(len(audio))
     x_new = np.linspace(0, len(audio) - 1, n_out)
     return np.interp(x_new, x_old, audio).astype(np.float32)
+
+
+def clarify(audio, sr, presence_hz=3000.0, q=0.8, thresh_db=-24.0, ratio=3.0, peak=0.89):
+    """Make speech carry on a small speaker: cut the bass it can't play, lift the consonant band,
+    even out the level with a gentle compressor, then play the loudest part just under full scale.
+    About 20 ms per sentence."""
+    from scipy.signal import butter, lfilter, sosfilt
+
+    def smooth(x, seconds):
+        n = max(1, int(sr * seconds))
+        return np.convolve(x, np.ones(n) / n, mode="same")
+
+    x = sosfilt(butter(2, CLARITY_HIGHPASS_HZ, "highpass", fs=sr, output="sos"), audio)
+    # peaking EQ (RBJ audio EQ cookbook) centered on the consonant band
+    a_ = 10 ** (CLARITY_PRESENCE_DB / 40)
+    w0 = 2 * np.pi * presence_hz / sr
+    alpha = np.sin(w0) / (2 * q)
+    b = np.array([1 + alpha * a_, -2 * np.cos(w0), 1 - alpha * a_])
+    a = np.array([1 + alpha / a_, -2 * np.cos(w0), 1 - alpha / a_])
+    x = lfilter(b / a[0], a / a[0], x)
+    # compressor: 10 ms RMS envelope, anything more than thresh_db below the peak passes untouched
+    env_db = 10 * np.log10(smooth(x * x, 0.010) + 1e-10)
+    over = np.maximum(0.0, env_db - (20 * np.log10(np.abs(x).max() + 1e-9) + thresh_db))
+    x = x * smooth(10 ** (-over * (1 - 1 / ratio) / 20), 0.025)
+    return (x * (peak / (np.abs(x).max() + 1e-9))).astype(np.float32)
 
 
 def speech_band(audio, sr, lo=250.0, hi=3500.0):

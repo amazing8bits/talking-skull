@@ -188,7 +188,8 @@ The ESP32 prints a status line every 2 seconds (radar frames, whether someone is
 
 All in the settings block at the top of `skull.py`:
 
-- **Voice:** `SAY_VOICE`, `SAY_RATE`, and `PITCH_DROP` (below 1.0 makes it deeper). `skull_british.py` uses a natural-pitch British voice instead.
+- **Voice:** `SAY_VOICE`, `SAY_RATE`, and `PITCH_DROP` (below 1.0 makes it deeper; much below 0.9 gets muddy on a small speaker). `skull_british.py` uses a natural-pitch British voice instead.
+- **Clarity:** `CLARITY` cuts the bass a 2" speaker can't play (`CLARITY_HIGHPASS_HZ`), boosts the consonant band around 3 kHz (`CLARITY_PRESENCE_DB`), evens out the level and plays it near full scale. It made the voice noticeably easier to understand; the jaw still follows the unprocessed speech. It applies to skull mode; Bob's voice is already clear.
 - **Personality:** `SYSTEM_PROMPT`, `GREETINGS` and `GOODBYES`. The skull is a theatrical, boastful villain who is secretly delighted by visitors, keeps it family friendly, compliments costumes and never asks for personal details.
 - **Presenter mode:** say "switch to presenter mode" and the skull becomes Bob, a teacher who explains how it was built, with a British voice and hazel eyes. His facts are in `PRESENTER_PROMPT`; "switch to skull mode" goes back. See the [host README](../host/README.md#modes).
 - **Listening:** `END_SILENCE` (pause that ends a question) and `SPEECH_OVER_NOISE` (raise it on a noisy street).

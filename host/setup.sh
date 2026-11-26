@@ -13,7 +13,7 @@ PY="$(brew --prefix)/bin/python3.12"
 "$PY" -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install numpy sounddevice webrtcvad-wheels mlx-whisper anthropic pyserial
+pip install numpy sounddevice webrtcvad-wheels mlx-whisper anthropic pyserial scipy
 
 echo "Downloading the Whisper model (about 1.6 GB, one time)..."
 python -c "import mlx_whisper, numpy as np; mlx_whisper.transcribe(np.zeros(16000, dtype=np.float32), path_or_hf_repo='mlx-community/whisper-large-v3-turbo')"

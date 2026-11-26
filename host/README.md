@@ -54,6 +54,6 @@ The ESP32 firmware talks to the Mac over **USB serial** at 115200 baud with one 
 
 ## Tuning
 
-The settings at the top of `skull.py` cover the voice (`SAY_VOICE`, `SAY_RATE`, `PITCH_DROP`), listening (`END_SILENCE`, `SPEECH_OVER_NOISE`), and jaw sync (`JAW_LEAD_MS`, `JAW_SYLLABLE_DB`, `JAW_MIN_OPEN`). The skull's personality is in `SYSTEM_PROMPT`, and Bob's in `PRESENTER_PROMPT` with his voice in `PRESENTER_VOICES`, `PRESENTER_RATE` and `PRESENTER_PITCH`.
+The settings at the top of `skull.py` cover the voice (`SAY_VOICE`, `SAY_RATE`, `PITCH_DROP`, and `CLARITY`, which cleans the skull voice up for the small speaker), listening (`END_SILENCE`, `SPEECH_OVER_NOISE`), and jaw sync (`JAW_LEAD_MS`, `JAW_SYLLABLE_DB`, `JAW_MIN_OPEN`). The skull's personality is in `SYSTEM_PROMPT`, and Bob's in `PRESENTER_PROMPT` with his voice in `PRESENTER_VOICES`, `PRESENTER_RATE` and `PRESENTER_PITCH`.
 
 Better voices: System Settings → Accessibility → Spoken Content → System Voice → Manage Voices.
