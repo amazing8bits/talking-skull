@@ -20,13 +20,13 @@ Runs on the Waveshare ESP32-S3-DEV-KIT-N16R8:
 | File | |
 |---|---|
 | `skull_esp32.ino` | Main sketch: radar, servos, serial commands, eye behavior |
-| `eye_art.h` | Eye renderer: sclera, polar-mapped iris with live pupil size, curved lids, lid shadow, foreshortening, glints |
+| `eye_art.h` | Eye renderer: sclera, polar-mapped iris with live pupil size, pupil color ramp (for the glow), curved lids, lid shadow, foreshortening, glints |
 | `eye_art_data.h` | Eye textures, **generated** by [`tools/eyegen`](../../tools/eyegen/). Don't edit by hand |
 
-To change the eyes (color, a different iris):
+The eyes have glowing red pupils on a black sclera by default (`--color smolder --sclera black --pupil glow --seed 7`). To change them (color, a natural white eye, a different iris):
 ```bash
 cd tools/eyegen
-python3 eyegen.py --color ember --seed 3 --header ../../firmware/skull_esp32/eye_art_data.h
+python3 eyegen.py --color ember --sclera white --pupil dark --seed 3 --header ../../firmware/skull_esp32/eye_art_data.h
 ```
 
 ## Display orientation
